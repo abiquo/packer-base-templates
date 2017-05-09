@@ -22,7 +22,11 @@ if [[ "$FILE" == *".vmx" ]]; then
 
   echo "Generating output OVA..."
   ovftool -o -n="$VM_NAME" "$OUTPUTDIR$VMNAME/$VMNAME.ovf" "$OUTPUTDIR/$VMNAME.ova" | tee $LOG
-  [ -z $KEEPOVF ] && rm -rf "$OUTPUTDIR/$VMNAME/"
+  if [ $KEEPOVF == "false" ] || [ -z $KEEPOVF ] ; then
+    echo "Cleaning up intermediate OVF..."
+    rm -rf "$OUTPUTDIR/$VMNAME/"
+  fi
+  echo "Done."
 else
   echo "Skipping non VMX file $FILE" | tee $LOG
 fi
