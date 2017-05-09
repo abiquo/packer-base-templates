@@ -1,0 +1,18 @@
+{
+    "headless": "false",
+    "vm_name": "centos6",
+    "output_dir": "resulting_images/",
+    "http_directory": "./http",
+    "iso_url": "http://sunsite.rediris.es/mirror/CentOS/6.8/isos/x86_64/CentOS-6.8-x86_64-minimal.iso",
+    "iso_checksum": "0ca12fe5f28c2ceed4f4084b41ff8a0b",
+    "iso_checksum_type": "md5",
+    "ssh_port": "22",
+    "ssh_wait_timeout": "1h",
+    "ssh_password": "temporal",
+    "ssh_username": "root",
+    "cpu": "1",
+    "ram": "1024",
+    "disk_size": "10240",
+    "kickstart_file": "anaconda-ks-c6.cfg",
+    "chef_agent_script": "https://raw.githubusercontent.com/abiquo/abiquo-chef-agent/master/install/install-centos-6.sh"
+}

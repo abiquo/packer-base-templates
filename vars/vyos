@@ -1,0 +1,17 @@
+{
+    "headless": "false",
+    "vm_name": "vyos",
+    "output_dir": "resulting_images/",
+    "http_directory": "./http",
+    "iso_url": "http://packages.vyos.net/iso/release/1.1.7/vyos-1.1.7-amd64.iso",
+    "iso_checksum": "c40a889469e0eea43d92c73149f1058e3650863b",
+    "iso_checksum_type": "sha1",
+    "ssh_port": "22",
+    "ssh_wait_timeout": "1h",
+    "ssh_password": "admin",
+    "ssh_username": "admin",
+    "cpu": "1",
+    "ram": "512",
+    "disk_size": "2048",
+    "kickstart_file": "anaconda-ks-c7.cfg"
+}

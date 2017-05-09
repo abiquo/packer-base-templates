@@ -1,0 +1,6 @@
+alias pp="python -mjson.tool"
+
+alias scpi='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+alias sshi='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+
+alias lrt="ll -lrt"

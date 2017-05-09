@@ -1,0 +1,17 @@
+{
+    "headless": "false",
+    "vm_name": "ubuntu1604",
+    "output_dir": "resulting_images/",
+    "http_directory": "./http",
+    "iso_url": "http://ubuntu.cica.es/releases/xenial/ubuntu-16.04.2-server-amd64.iso",
+    "iso_checksum": "737ae7041212c628de5751d15c3016058b0e833fdc32e7420209b76ca3d0a535",
+    "iso_checksum_type": "sha256",
+    "ssh_port": "22",
+    "ssh_wait_timeout": "1h",
+    "ssh_password": "temporal",
+    "ssh_username": "root",
+    "cpu": "1",
+    "ram": "1024",
+    "disk_size": "10240",
+    "kickstart_file": "preseed_ifnames.cfg"
+}

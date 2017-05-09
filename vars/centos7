@@ -1,0 +1,18 @@
+{
+    "headless": "false",
+    "vm_name": "centos7",
+    "output_dir": "resulting_images/",
+    "http_directory": "./http",
+    "iso_url": "http://sunsite.rediris.es/mirror/CentOS/7/isos/x86_64/CentOS-7-x86_64-Minimal-1611.iso",
+    "iso_checksum": "27bd866242ee058b7a5754e83d8ee8403e216b93d130d800852a96f41c34d86a",
+    "iso_checksum_type": "sha256",
+    "ssh_port": "22",
+    "ssh_wait_timeout": "1h",
+    "ssh_password": "temporal",
+    "ssh_username": "root",
+    "cpu": "1",
+    "ram": "1024",
+    "disk_size": "10240",
+    "kickstart_file": "anaconda-ks-c7.cfg",
+    "chef_agent_script": "https://raw.githubusercontent.com/abiquo/abiquo-chef-agent/master/install/install-centos-7.sh"
+}

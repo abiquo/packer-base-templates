@@ -1,0 +1,18 @@
+{
+    "headless": "false",
+    "vm_name": "fedora25",
+    "output_dir": "resulting_images/",
+    "http_directory": "./http",
+    "iso_url": "http://ftp.cica.es/fedora/linux/releases/25/Server/x86_64/iso/Fedora-Server-netinst-x86_64-25-1.3.iso",
+    "iso_checksum": "86bc3694f4938382753d1e9536f2140a6c9c1978207766340c679a89509073c7",
+    "iso_checksum_type": "sha256",
+    "ssh_port": "22",
+    "ssh_wait_timeout": "1h",
+    "ssh_password": "temporal",
+    "ssh_username": "root",
+    "cpu": "1",
+    "ram": "1024",
+    "disk_size": "10240",
+    "kickstart_file": "anaconda-ks-f25.cfg",
+    "chef_agent_script": "https://raw.githubusercontent.com/abiquo/abiquo-chef-agent/master/install/install-centos-7.sh"
+}

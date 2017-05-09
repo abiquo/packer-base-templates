@@ -1,0 +1,68 @@
+{
+  "builders": [
+    {
+      "type": "vmware-iso",
+      "boot_command": [
+        "root<enter><wait>",
+        "ifconfig eth0 up && udhcpc -i eth0<enter><wait5>",
+        "wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `kickstart_file` }}<enter><wait>",
+        "setup-alpine -f alpine-answers<enter><wait10>",
+        "{{ user `ssh_password` }}<enter><wait>",
+        "{{ user `ssh_password` }}<enter><wait10>",
+        "y<enter>",
+        "<wait10><wait10><wait10>",
+        "rc-update add sshd default<enter>",
+        "mount /dev/sda3 /mnt<enter>",
+        "echo 'PasswordAuthentication yes' >> /mnt/etc/ssh/sshd_config<enter>",
+        "echo 'PermitRootLogin yes' >> /mnt/etc/ssh/sshd_config<enter>",
+        "umount /mnt<enter>",
+        "eject<enter>",
+        "reboot<enter>"
+      ],
+      "boot_wait": "10s",
+      "disk_size": "{{user `disk_size`}}",
+      "disk_type_id": "0",
+      "vmdk_name": "{{user `vm_name`}}",
+      "guest_os_type": "other3xlinux-64",
+      "headless": "{{user `headless`}}",
+      "http_directory": "{{user `http_directory`}}",
+      "iso_url": "{{user `iso_url`}}",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "iso_checksum_type": "{{user `iso_checksum_type`}}",
+      "shutdown_command" : "poweroff",
+      "shutdown_timeout" : "60s",
+      "ssh_password": "{{user `ssh_password`}}",
+      "ssh_port": "{{user `ssh_port`}}",
+      "ssh_username": "{{user `ssh_username`}}",
+      "ssh_wait_timeout": "{{user `ssh_wait_timeout`}}",
+      "vm_name": "{{user `vm_name`}}",
+      "vmx_data": {
+        "memsize": "{{user `ram`}}",
+        "numvcpus": "{{user `cpu`}}"
+      },
+      "output_directory": "output-{{user `vm_name`}}-vmware"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "execute_command": "/bin/sh -x '{{.Path}}'",
+      "scripts": [
+        "scripts/alpine.sh",
+        "scripts/alpine-cloud-init.sh",
+        "scripts/finish.sh"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "manifest",
+      "output": "{{user `vm_name`}}-manifest.json"
+    },
+    {
+      "type": "shell-local",
+      "inline": "jq '.last_run_uuid as $p | .builds[] | select(.packer_run_uuid == $p) | .files[] | select(.name | contains(\"vmx\")) | select(.name | contains(\"vmxf\") | not ) | .name' {{user `vm_name`}}-manifest.json | xargs output_processors/file",
+      "environment_vars": [ "OUTPUT_DIR={{user `output_dir`}}", "VM_NAME={{user `vm_name`}}" ] 
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "builders": [
+    {
+      "type": "vmware-iso",
+      "boot_command": [
+        "<enter><wait><f6><esc><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "<bs><bs><bs><bs>",
+        "/install/vmlinuz",
+        " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `kickstart_file`}}",
+        " auto",
+        " console-setup/ask_detect=false",
+        " console-setup/layoutcode=us",
+        " console-setup/modelcode=pc105",
+        " debian-installer=en_US",
+        " fb=false",
+        " initrd=/install/initrd.gz",
+        " kbd-chooser/method=us",
+        " keyboard-configuration/layout=USA",
+        " keyboard-configuration/variant=USA",
+        " locale=en_US",
+        " net.ifnames=0",
+        " netcfg/get_hostname={{ user `vm_name`}}",
+        " netcfg/get_domain=localdomain<wait>",
+        " noapic -- <enter>"
+      ],
+      "boot_wait": "5s",
+      "disk_size": "{{user `disk_size`}}",
+      "disk_type_id": "0",
+      "vmdk_name": "{{user `vm_name`}}",
+      "guest_os_type": "ubuntu-64",
+      "headless": "{{user `headless`}}",
+      "http_directory": "{{user `http_directory`}}",
+      "iso_url": "{{user `iso_url`}}",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "iso_checksum_type": "{{user `iso_checksum_type`}}",
+      "shutdown_command" : "shutdown -h now",
+      "shutdown_timeout" : "30s",
+      "ssh_password": "{{user `ssh_password`}}",
+      "ssh_port": "{{user `ssh_port`}}",
+      "ssh_username": "{{user `ssh_username`}}",
+      "ssh_wait_timeout": "{{user `ssh_wait_timeout`}}",
+      "vm_name": "{{user `vm_name`}}",
+      "vmx_data": {
+        "memsize": "{{user `ram`}}",
+        "numvcpus": "{{user `cpu`}}"
+      },
+      "output_directory": "output-{{user `vm_name`}}-vmware"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "files/bash_aliases",
+      "destination": "/root/.bash_aliases"
+    },
+    {
+      "type": "file",
+      "source": "files/gitconfig",
+      "destination": "/root/.gitconfig"
+    },
+    {
+      "type": "shell",
+      "inline": "curl 'https://raw.githubusercontent.com/abiquo/abiquo-chef-agent/master/install/install-ubuntu-systemd.sh' | bash -l "
+    },
+    {
+      "type": "shell",
+      "scripts": [
+        "scripts/ubuntu_packages.sh",
+        "scripts/ubuntu-cloud-init.sh",
+        "scripts/vmware-tools.sh",
+        "scripts/finish.sh"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "manifest",
+      "output": "{{user `vm_name`}}-manifest.json"
+    },
+    {
+      "type": "shell-local",
+      "inline": "jq '.last_run_uuid as $p | .builds[] | select(.packer_run_uuid == $p) | .files[] | select(.name | contains(\"vmx\")) | select(.name | contains(\"vmxf\") | not ) | .name' {{user `vm_name`}}-manifest.json | xargs output_processors/file",
+      "environment_vars": [ "OUTPUT_DIR={{user `output_dir`}}", "VM_NAME={{user `vm_name`}}" ] 
+    }
+  ]
+}

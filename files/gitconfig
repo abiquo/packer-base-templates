@@ -1,0 +1,37 @@
+[core]
+    editor = vim
+    ; pager = more
+    pager = less -rFXnM
+    excludesfile = ~/.gitignore
+
+[color]
+    status = auto
+    interactive = auto
+    diff = auto
+    branch = auto
+    ui = auto
+
+[alias]
+    st = status
+    ss = status --short
+    ci = commit
+    co = checkout
+    pl = pull
+    ps = push
+    pr = pull --rebase
+    br = branch
+    lg = log --graph
+    ll = log --graph --oneline
+
+[apply]
+    whitespace = nowarn
+
+[format]
+    pretty = format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset
+
+[push]
+    default = matching
+
+[diff]
+    renames = true
+    renameLimit = 200

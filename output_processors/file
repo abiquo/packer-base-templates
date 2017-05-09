@@ -1,0 +1,28 @@
+#!/bin/bash -x
+
+LOG=$(mktemp)
+FILE=$1
+KEEPOVF=$KEEP_OVF
+OUTPUTDIR=$OUTPUT_DIR
+VMNAME=$VM_NAME
+
+echo "Processing file $FILE..."
+if [[ "$FILE" == *".vmx" ]]; then
+  mkdir -p $OUTPUTDIR/$VMNAME
+  echo "Starting OVF conversion for $FILE..." | tee $LOG
+  ovftool -o -n="$VM_NAME" "$FILE" "$OUTPUTDIR/$VMNAME/$VMNAME.ovf" | tee $LOG
+  
+  echo "Changing VM id in OVF..."
+  last_dir=$(pwd)
+  cd "$OUTPUTDIR/$VMNAME/"
+  sed -i -e "s,ovf:id=\"vm\",ovf:id=\"$VMNAME\",g" "$VMNAME.ovf"
+  rm "$VMNAME.mf"
+  openssl sha1 * > "$VMNAME.mf"
+  cd "$last_dir"
+
+  echo "Generating output OVA..."
+  ovftool -o -n="$VM_NAME" "$OUTPUTDIR$VMNAME/$VMNAME.ovf" "$OUTPUTDIR/$VMNAME.ova" | tee $LOG
+  [ -z $KEEPOVF ] && rm -rf "$OUTPUTDIR/$VMNAME/"
+else
+  echo "Skipping non VMX file $FILE" | tee $LOG
+fi
