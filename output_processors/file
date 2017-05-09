@@ -21,7 +21,7 @@ if [[ "$FILE" == *".vmx" ]]; then
   cd "$last_dir"
 
   echo "Generating output OVA..."
-  ovftool -o -n="$VM_NAME" "$OUTPUTDIR$VMNAME/$VMNAME.ovf" "$OUTPUTDIR/$VMNAME.ova" | tee $LOG
+  ovftool -o -n="$VM_NAME" "$OUTPUTDIR/$VMNAME/$VMNAME.ovf" "$OUTPUTDIR/$VMNAME.ova" | tee $LOG
   if [ $KEEPOVF == "false" ] || [ -z $KEEPOVF ] ; then
     echo "Cleaning up intermediate OVF..."
     rm -rf "$OUTPUTDIR/$VMNAME/"
