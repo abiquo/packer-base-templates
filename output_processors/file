@@ -21,12 +21,12 @@ if [[ "$FILE" == *".vmx" ]]; then
   openssl sha1 * > "$VMNAME.mf"
   cd "$last_dir"
 
-  if [ $BUILDOVA == "true" ] || [ -z $BUILDOVA ] ; then
+  if [ "$BUILDOVA" == "true" ] || [ -z "$BUILDOVA" ] ; then
     echo "Generating output OVA..."
     ovftool -o -n="$VM_NAME" "$OUTPUTDIR/$VMNAME/$VMNAME.ovf" "$OUTPUTDIR/$VMNAME.ova" | tee $LOG
   fi
 
-  if [ $KEEPOVF == "false" ] || [ -z $KEEPOVF ] ; then
+  if [ "$KEEPOVF" == "false" ] || [ -z "$KEEPOVF" ] ; then
     echo "Cleaning up intermediate OVF..."
     rm -rf "$OUTPUTDIR/$VMNAME/"
   fi
