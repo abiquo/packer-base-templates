@@ -1,0 +1,50 @@
+{
+  "builders": [
+    {
+      "type": "vmware-iso",
+      "boot_command": [
+        "<down><down><down><enter><wait><enter><wait><enter><wait10><wait10><enter><wait10><wait10><enter>",
+        "<wait10><wait10><wait10><wait10><wait10>n<enter><wait>em0<enter><wait><enter><wait>y<enter>",
+        "<wait10><wait10><wait10>8<enter><wait>",
+        "telnet {{ .HTTPIP }} {{ .HTTPPort }} | sed '1,/^$/d' >/conf/config.xml<wait><enter>",
+        "GET /{{user `kickstart_file`}} HTTP/1.0<enter><enter>",
+        "echo 'PasswordAuthentication yes' >> /usr/local/etc/ssh/sshd_config<enter>",
+        "reboot<enter>"
+      ],
+      "boot_wait": "60s",
+      "disk_size": "{{user `disk_size`}}",
+      "disk_type_id": "0",
+      "vmdk_name": "{{user `vm_name`}}",
+      "guest_os_type": "freebsd-64",
+      "headless": "{{user `headless`}}",
+      "http_directory": "{{user `http_directory`}}",
+      "iso_url": "{{user `iso_url`}}",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "iso_checksum_type": "{{user `iso_checksum_type`}}",
+      "shutdown_command": "poweroff",
+      "shutdown_timeout" : "30s",
+      "ssh_password": "{{user `ssh_password`}}",
+      "ssh_port": "{{user `ssh_port`}}",
+      "ssh_username": "{{user `ssh_username`}}",
+      "ssh_wait_timeout": "{{user `ssh_wait_timeout`}}",
+      "vm_name": "{{user `vm_name`}}",
+      "vmx_data": {
+        "memsize": "{{user `ram`}}",
+        "numvcpus": "{{user `cpu`}}"
+      },
+      "output_directory": "output-{{user `vm_name`}}-vmware"
+    }
+  ],
+  "provisioners": [  ],
+  "post-processors": [
+    {
+      "type": "manifest",
+      "output": "{{user `vm_name`}}-manifest.json"
+    },
+    {
+      "type": "shell-local",
+      "inline": "jq '.last_run_uuid as $p | .builds[] | select(.packer_run_uuid == $p) | .files[] | select(.name | contains(\"vmx\")) | select(.name | contains(\"vmxf\") | not ) | .name' {{user `vm_name`}}-manifest.json | xargs output_processors/file",
+      "environment_vars": [ "OUTPUT_DIR={{user `output_dir`}}", "VM_NAME={{user `vm_name`}}" ] 
+    }
+  ]
+}

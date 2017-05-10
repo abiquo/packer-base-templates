@@ -1,0 +1,17 @@
+{
+    "headless": "false",
+    "vm_name": "pfsense",
+    "output_dir": "resulting_images",
+    "http_directory": "./http",
+    "iso_url": "http://mirror.bcn.abiquo.com/images/pfSense-CE-2.3.4-RELEASE-amd64.iso",
+    "iso_checksum": "6183d0cbacc631eb14cd2c43044b8c40e14f9a16b626977b821acfbb82339d84",
+    "iso_checksum_type": "sha256",
+    "ssh_port": "22",
+    "ssh_wait_timeout": "1h",
+    "ssh_password": "pfsense",
+    "ssh_username": "admin",
+    "cpu": "1",
+    "ram": "1024",
+    "disk_size": "4096",
+    "kickstart_file": "pfsense-config.xml"
+}
