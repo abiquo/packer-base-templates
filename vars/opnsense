@@ -1,0 +1,17 @@
+{
+    "headless": "false",
+    "vm_name": "opnsense",
+    "output_dir": "resulting_images",
+    "http_directory": "./http",
+    "iso_url": "http://mirror.bcn.abiquo.com/images/OPNsense-17.1.4-OpenSSL-cdrom-amd64.iso",
+    "iso_checksum": "74fb3b6e1dd929345076a473d08819d6e3e54e72a60031a170fb6535d5a68004",
+    "iso_checksum_type": "sha256",
+    "ssh_port": "22",
+    "ssh_wait_timeout": "1h",
+    "ssh_password": "opnsense",
+    "ssh_username": "root",
+    "cpu": "1",
+    "ram": "1024",
+    "disk_size": "4096",
+    "kickstart_file": "opnsense-config.xml"
+}

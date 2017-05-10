@@ -2,3 +2,4 @@ packer_cache/
 *cache*
 *-manifest.json
 output-*-vmware
+resulting_images/
