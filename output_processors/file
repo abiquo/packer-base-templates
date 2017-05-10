@@ -1,10 +1,11 @@
-#!/bin/bash -x
+#!/bin/bash -xe
 
 LOG=$(mktemp)
 FILE=$1
 KEEPOVF=$KEEP_OVF
 OUTPUTDIR=$OUTPUT_DIR
 VMNAME=$VM_NAME
+BUILDOVA=$BUILD_OVA
 
 echo "Processing file $FILE..."
 if [[ "$FILE" == *".vmx" ]]; then
@@ -20,8 +21,11 @@ if [[ "$FILE" == *".vmx" ]]; then
   openssl sha1 * > "$VMNAME.mf"
   cd "$last_dir"
 
-  echo "Generating output OVA..."
-  ovftool -o -n="$VM_NAME" "$OUTPUTDIR/$VMNAME/$VMNAME.ovf" "$OUTPUTDIR/$VMNAME.ova" | tee $LOG
+  if [ $BUILDOVA == "true" ] || [ -z $BUILDOVA ] ; then
+    echo "Generating output OVA..."
+    ovftool -o -n="$VM_NAME" "$OUTPUTDIR/$VMNAME/$VMNAME.ovf" "$OUTPUTDIR/$VMNAME.ova" | tee $LOG
+  fi
+
   if [ $KEEPOVF == "false" ] || [ -z $KEEPOVF ] ; then
     echo "Cleaning up intermediate OVF..."
     rm -rf "$OUTPUTDIR/$VMNAME/"
