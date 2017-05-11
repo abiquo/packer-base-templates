@@ -1,4 +1,8 @@
 {
+    "template": "templates/windows.json",
+    "info": "Log in as 'administrator' with password 'Abiqu0!$'.",
+    "product": "Windows Server 2012 R2 Standard Edition",
+    "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/windows.png",
     "headless": "false",
     "vm_name": "win2012r2-std",
     "output_dir": "resulting_images/",

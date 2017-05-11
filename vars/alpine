@@ -1,4 +1,8 @@
 {
+    "template": "templates/alpine.json",
+    "info": "Log in as 'root' with password 'temporal'.",
+    "product": "Alpine Linux",
+    "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/alpine.png",
     "headless": "false",
     "vm_name": "alpine",
     "output_dir": "resulting_images/",

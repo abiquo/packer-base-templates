@@ -1,4 +1,8 @@
 {
+    "template": "templates/ubuntu.json",
+    "info": "Log in as 'root' with password 'temporal'.",
+    "product": "Ubuntu 16.04 LTS x86_64",
+    "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/ubuntu1604.png",
     "headless": "false",
     "vm_name": "ubuntu1604",
     "output_dir": "resulting_images/",

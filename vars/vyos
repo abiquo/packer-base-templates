@@ -1,4 +1,8 @@
 {
+    "template": "templates/vyos.json",
+    "info": "Log in as 'admin' with password 'admin'.",
+    "product": "VyOS 1.1.7",
+    "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/vyos.png",
     "headless": "false",
     "vm_name": "vyos",
     "output_dir": "resulting_images/",
