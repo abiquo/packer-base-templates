@@ -10,6 +10,7 @@ import time
 
 parser = argparse.ArgumentParser(description='Build Packer Template')
 parser.add_argument('--debug', dest='debug', help='enable verbose logging', action='store_true')
+parser.add_argument('--headless', dest='headless', help='make VMs headless', action='store_true')
 parser.add_argument('--skip-build', dest='skip_build', help='skip packer build. For testing only.', action='store_true')
 parser.add_argument('--packer', type=str, help='packer binary to use')
 parser.add_argument('--varfile', type=str, help='packer var file to use', required=True)
@@ -138,11 +139,15 @@ if __name__ == "__main__":
         else:
             packer_cmd = 'packer'
 
+        headless = ''
+        if args.headless:
+            headless = "-var 'headless=true'"
+
         command = None
         if outdir is None:
-            command = "%s build -force -var-file %s %s" % (packer_cmd, file, template_file)
+            command = "%s build -force -var-file %s %s %s" % (packer_cmd, file, headless, template_file)
         else:
-            command = "%s build -force -var-file %s -var 'outputdir=%s' %s" % (packer_cmd, file, outdir, template_file)
+            command = "%s build -force -var-file %s %s -var 'outputdir=%s' %s" % (packer_cmd, file, headless, outdir, template_file)
 
         logger.debug('Final command to run is : %s' % command)
 
