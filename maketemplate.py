@@ -105,7 +105,7 @@ def update_index(json_vars):
 if __name__ == "__main__":
     args = parser.parse_args()
 
-    if args.debug is not None:
+    if args.debug:
         logger.setLevel(logging.DEBUG)
 
     logger.debug('Var file is %s' % args.varfile)
@@ -127,7 +127,17 @@ if __name__ == "__main__":
 
         template_file = json_vars['template']
 
-        command = "packer build -force -var-file %s %s" % (file, template_file)
+        outdir = None
+        if 'OUTPUT_DIR' in os.environ.keys() is not None:
+            outdir = os.environ['OUTPUT_DIR']
+            logger.info('Using output dir %s' % outdir)
+
+        command = None
+        if outdir is None:
+            command = "packer build -force -var-file %s %s" % (file, template_file)
+        else:
+            command = "packer build -force -var-file %s -var 'outputdir=%s' %s" % (file, outdir, template_file)
+
         logger.debug('Final command to run is : %s' % command)
 
         if not args.skip_build:
