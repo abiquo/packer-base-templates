@@ -30,7 +30,8 @@
         "memsize": "{{user `ram`}}",
         "numvcpus": "{{user `cpu`}}"
       },
-      "output_directory": "output-{{user `vm_name`}}-vmware"
+      "output_directory": "output-{{user `vm_name`}}-vmware",
+      "vnc_bind_address": "0.0.0.0"
     }
   ],
   "provisioners": [
