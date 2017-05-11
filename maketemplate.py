@@ -132,11 +132,16 @@ if __name__ == "__main__":
             outdir = os.environ['OUTPUT_DIR']
             logger.info('Using output dir %s' % outdir)
 
+        if args.packer:
+            packer_cmd = args.packer
+        else:
+            packer_cmd = 'packer'
+
         command = None
         if outdir is None:
-            command = "packer build -force -var-file %s %s" % (file, template_file)
+            command = "%s build -force -var-file %s %s" % (packer_cmd, file, template_file)
         else:
-            command = "packer build -force -var-file %s -var 'outputdir=%s' %s" % (file, outdir, template_file)
+            command = "%s build -force -var-file %s -var 'outputdir=%s' %s" % (packer_cmd, file, outdir, template_file)
 
         logger.debug('Final command to run is : %s' % command)
 
