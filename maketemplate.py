@@ -4,6 +4,7 @@ import argparse
 import json
 import sys
 import os
+import subprocess
 import lxml.etree as ET
 import time
 
