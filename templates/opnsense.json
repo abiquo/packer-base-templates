@@ -13,7 +13,7 @@
         "/usr/local/etc/rc.installer<enter><wait5>",
         "<enter><wait><enter><wait><enter><wait><enter><wait><enter><wait10><wait10><wait10><wait10><wait10><wait10><enter>"
       ],
-      "boot_wait": "60s",
+      "boot_wait": "80s",
       "disk_size": "{{user `disk_size`}}",
       "disk_type_id": "0",
       "vmdk_name": "{{user `vm_name`}}",
