@@ -1,5 +1,5 @@
 {
-    "template": "templates/centos.json",
+    "template": "templates/pfsense.json",
     "info": "Log in as 'admin' with password 'pfsense'. em0 is assigned as WAN interface.",
     "product": "pfSense CE 2.3.4",
     "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/pfsense.png",
