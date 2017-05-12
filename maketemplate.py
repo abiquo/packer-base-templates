@@ -47,7 +47,19 @@ def parse_ovfindex(ovfindex_file, element):
         xml.append(element)
     return xml
 
-def build_element(ovf_file, product, info, icon):
+def build_element(json):
+    output_dir = json['output_dir']
+    vm_name = json['vm_name']
+    ovf_file = "%s/%s/%s.ovf" % (output_dir, vm_name, vm_name)
+    product = json_vars['product']
+    info = json_vars['info']
+    icon = json_vars['icon']
+
+    logger.debug('OVF File is %s' % ovf_file)
+    logger.debug('Product is %s' % product)
+    logger.debug('Info is %s' % info)
+    logger.debug('Icon is %s' % icon)
+
     built = " Built %s." % datetime.fromtimestamp(os.path.getmtime(ovf_file)).strftime("%Y%m%d")
 
     info_date = "%s%s" % (info, built)
@@ -79,20 +91,11 @@ def getkey(elem):
 
 def update_index(json_vars):
     output_dir = json_vars['output_dir']
-    vm_name = json_vars['vm_name']
-    ovf_file = "%s/%s.ovf" % (vm_name, vm_name)
     ovfindex_file = "%s/ovfindex.xml" % output_dir
-    product = json_vars['product']
-    info = json_vars['info']
-    icon = json_vars['icon']
-
-    logger.debug('OVF File is %s' % ovf_file)
+    
     logger.debug('OVFindex File is %s' % ovfindex_file)
-    logger.debug('Product is %s' % product)
-    logger.debug('Info is %s' % info)
-    logger.debug('Icon is %s' % icon)
-
-    element = build_element(ovf_file, product, info, icon)
+    
+    element = build_element(json_vars)
     logger.debug('%s' % ET.tostring(element, pretty_print=True))
 
     ovfindex_xml = parse_ovfindex(ovfindex_file, element).getroottree()
@@ -169,5 +172,6 @@ if __name__ == "__main__":
         else:
             logger.debug('Skipping packer build.')
 
-        logger.info('Rebuilding ovfindex.xml...')
-        update_index(json_vars)
+        if 'KEEPOVF' in os.environ.keys() and os.environ['KEEPOVF'] == 'true':
+            logger.info('Rebuilding ovfindex.xml...')
+            update_index(json_vars)
