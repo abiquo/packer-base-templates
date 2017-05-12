@@ -130,7 +130,7 @@ if __name__ == "__main__":
         template_file = json_vars['template']
 
         outdir = None
-        if 'OUTPUT_DIR' in os.environ.keys() is not None:
+        if 'OUTPUT_DIR' in os.environ.keys():
             outdir = os.environ['OUTPUT_DIR']
             json_vars['output_dir'] = outdir
             logger.info('Using output dir %s' % outdir)
@@ -150,7 +150,7 @@ if __name__ == "__main__":
         else:
             command = "%s build -force -var-file %s %s -var 'outputdir=%s' %s" % (packer_cmd, file, headless, outdir, template_file)
 
-        logger.debug('Final command to run is : %s' % command)
+        logger.info('Packer command to run is : %s' % command)
 
         if not args.skip_build:
             packerproc = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
