@@ -172,7 +172,7 @@ if __name__ == "__main__":
         else:
             logger.debug('Skipping packer build.')
 
-        if 'KEEPOVF' in os.environ.keys() and os.environ['KEEPOVF'] == 'true':
+        if 'KEEP_OVF' in os.environ.keys() and os.environ['KEEP_OVF'] == 'true':
             logger.info('Rebuilding ovfindex.xml...')
             update_index(json_vars)
         else:
