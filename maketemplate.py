@@ -132,6 +132,7 @@ if __name__ == "__main__":
         outdir = None
         if 'OUTPUT_DIR' in os.environ.keys() is not None:
             outdir = os.environ['OUTPUT_DIR']
+            json_vars['output_dir'] = outdir
             logger.info('Using output dir %s' % outdir)
 
         if args.packer:
