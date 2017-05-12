@@ -7,6 +7,7 @@ import os
 import subprocess
 import lxml.etree as ET
 import time
+from datetime import datetime
 
 parser = argparse.ArgumentParser(description='Build Packer Template')
 parser.add_argument('--debug', dest='debug', help='enable verbose logging', action='store_true')
@@ -27,7 +28,7 @@ def parse_ovfindex(ovfindex_file, element):
     if os.path.isfile(ovfindex_file):
         parser = ET.XMLParser(remove_blank_text=True)
         xml = ET.parse(ovfindex_file, parser).getroot()
-        
+
         logger.debug('xml attribs : %s' % element.keys())
         ovf = element.attrib['{http://www.abiquo.com/appliancemanager/repositoryspace}OVFFile']
         logger.debug('ovf is : %s' % ovf)
@@ -47,7 +48,8 @@ def parse_ovfindex(ovfindex_file, element):
     return xml
 
 def build_element(ovf_file, product, info, icon):
-    built = " Built %s." % time.strftime("%Y%m%d")
+    built = " Built %s." % datetime.fromtimestamp(os.path.getmtime(ovf_file)).strftime("%Y%m%d")
+
     info_date = "%s%s" % (info, built)
     xml = ET.Element("{http://www.abiquo.com/appliancemanager/repositoryspace}OVFDescription")
     xml.set('{http://schemas.dmtf.org/ovf/envelope/1}class', 'OS')
@@ -65,7 +67,7 @@ def build_element(ovf_file, product, info, icon):
     icon_node.set('{http://schemas.dmtf.org/ovf/envelope/1}mimeType', 'image/png')
     icon_node.set('{http://schemas.dmtf.org/ovf/envelope/1}width', '200')
     icon_node.set('{http://schemas.dmtf.org/ovf/envelope/1}height', '200')
-    
+
     xml.append(info_node)
     xml.append(product_node)
     xml.append(icon_node)
