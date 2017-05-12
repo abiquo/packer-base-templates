@@ -175,3 +175,5 @@ if __name__ == "__main__":
         if 'KEEPOVF' in os.environ.keys() and os.environ['KEEPOVF'] == 'true':
             logger.info('Rebuilding ovfindex.xml...')
             update_index(json_vars)
+        else:
+            logger.info('Not rebuilding ovfindex...')
