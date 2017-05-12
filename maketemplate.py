@@ -148,7 +148,7 @@ if __name__ == "__main__":
         if outdir is None:
             command = "%s build -force -var-file %s %s %s" % (packer_cmd, file, headless, template_file)
         else:
-            command = "%s build -force -var-file %s %s -var 'outputdir=%s' %s" % (packer_cmd, file, headless, outdir, template_file)
+            command = "%s build -force -var-file %s %s -var 'output_dir=%s' %s" % (packer_cmd, file, headless, outdir, template_file)
 
         logger.info('Packer command to run is : %s' % command)
 
