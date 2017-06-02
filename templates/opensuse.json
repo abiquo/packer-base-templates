@@ -1,4 +1,8 @@
 {
+  "variables": {
+    "abiquo_username": "{{env `ABIQUO_USERNAME`}}",
+    "abiquo_password": "{{env `ABIQUO_PASSWORD`}}"
+  },
   "builders": [
     {
       "type": "vmware-iso",
@@ -56,6 +60,23 @@
       "type": "shell-local",
       "inline": "jq '.last_run_uuid as $p | .builds[] | select(.packer_run_uuid == $p) | .files[] | select(.name | contains(\"vmx\")) | select(.name | contains(\"vmxf\") | not ) | .name' {{user `vm_name`}}-manifest.json | xargs output_processors/file",
       "environment_vars": [ "OUTPUT_DIR={{user `output_dir`}}", "VM_NAME={{user `vm_name`}}" ] 
+    },
+    {
+      "type": "abiquo",
+      "api_url": "http://mothership.bcn.abiquo.com/api",
+      "api_username": "{{user `abiquo_username`}}",
+      "api_password": "{{user `abiquo_password`}}",
+      "datacenter": "Abiquo BCN",
+      "template_name": "{{user `vm_name`}}",
+      "description": "{{user `info`}} {{timestamp}}",
+      "category": "Linux - openSuSe",
+      "cpu": "{{user `cpu`}}",
+      "ram_mb": "{{user `ram`}}",
+      "login_user": "{{user `ssh_username`}}",
+      "login_password": "{{user `ssh_password`}}",
+      "eth_driver": "VIRTIO",
+      "chef_enabled": "true",
+      "icon_url": "{{user `icon`}}"
     }
   ]
 }
