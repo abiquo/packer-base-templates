@@ -2,6 +2,12 @@
 
 A collection of base OS templates.
 
+## Requirements
+
+Packer templates as they are in this repo use the [Abiquo packer post-processor](https://github.com/abiquo/packer-post-processor-abiquo) so the output is uploaded to an Abiquo environment. It is required to install this plugin in advance.
+
+If you don't want to use such plugin, you'll need to edit the json templates and remove the `abiquo` post-processor.
+
 ## Usage
 
 For CI purposes, the `maketemplate.py` was built.
