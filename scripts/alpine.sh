@@ -33,4 +33,4 @@ UseDNS no
 EOF
 
 # Try to make it boot in Hyper-V
-sed -i '/APPEND/ s/$/ acpi=off modules=hv_storsvc,hv_vmbus,hv_utils,hv_ballon,hv_netsvc/g' /boot/extlinux.conf
+# sed -i '/APPEND/ s/$/ acpi=off modules=hv_storsvc,hv_vmbus,hv_utils,hv_ballon,hv_netsvc/g' /boot/extlinux.conf

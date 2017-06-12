@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apk --update add py-setuptools cloud-init
+apk --update add py-setuptools py-urllib3 py-chardet py-certifi py-idna cloud-init
 
 tmpcfg=$(mktemp -d)
 cp -rp /etc/cloud/* $tmpcfg/
