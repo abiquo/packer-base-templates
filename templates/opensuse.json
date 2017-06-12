@@ -63,7 +63,7 @@
     },
     {
       "type": "abiquo",
-      "api_url": "http://mothership.bcn.abiquo.com/api",
+      "api_url": "https://mothership.bcn.abiquo.com/api",
       "api_username": "{{user `abiquo_username`}}",
       "api_password": "{{user `abiquo_password`}}",
       "datacenter": "Abiquo BCN",
