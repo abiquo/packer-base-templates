@@ -1,0 +1,22 @@
+{
+    "channel": "stable",
+    "template": "templates/coreos.json",
+    "info": "CoreOS stable. Use cloud-init script to configure.",
+    "product": "CoreOS x86_64",
+    "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/coreos.png",
+    "headless": "false",
+    "vm_name": "coreos-stable",
+    "output_dir": "resulting_images/",
+    "http_directory": "./http",
+    "iso_url": "http://stable.release.core-os.net/amd64-usr/current/coreos_production_iso_image.iso",
+    "iso_checksum": "39807e72ab7a0eea439fdfd688fb4259c19a8eea",
+    "iso_checksum_type": "sha1",
+    "ssh_port": "22",
+    "ssh_wait_timeout": "1h",
+    "ssh_key": "files/vagrant-priv-key",
+    "ssh_username": "core",
+    "cpu": "1",
+    "ram": "1024",
+    "disk_size": "10240",
+    "kickstart_file": "notused"
+  }
