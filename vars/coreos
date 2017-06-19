@@ -4,6 +4,7 @@
     "info": "CoreOS stable. Use cloud-init script to configure.",
     "product": "CoreOS x86_64",
     "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/coreos.png",
+    "category": "Linux Containers",
     "headless": "false",
     "vm_name": "coreos-stable",
     "output_dir": "resulting_images/",

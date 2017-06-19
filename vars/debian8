@@ -3,6 +3,7 @@
     "info": "Log in as 'root' with password 'temporal'.",
     "product": "Debian 8 Jessie x86_64",
     "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/debian.png",
+    "category": "Linux OS - Debian",
     "headless": "false",
     "vm_name": "debian8",
     "output_dir": "resulting_images/",

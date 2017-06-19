@@ -90,7 +90,7 @@
       "datacenter": "Abiquo BCN",
       "template_name": "{{user `vm_name`}}",
       "description": "{{user `info`}} {{timestamp}}",
-      "category": "Router / FW",
+      "category": "{{user `category`}}",
       "cpu": "{{user `cpu`}}",
       "ram_mb": "{{user `ram`}}",
       "login_user": "{{user `ssh_username`}}",

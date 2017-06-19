@@ -3,6 +3,7 @@
     "info": "Log in as 'root' with password 'temporal'.",
     "product": "Ubuntu 17.04 x86_64",
     "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/ubuntu1704.png",
+    "category": "Linux OS - Ubuntu",
     "headless": "false",
     "vm_name": "ubuntu1704",
     "output_dir": "resulting_images/",

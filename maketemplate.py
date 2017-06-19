@@ -53,6 +53,7 @@ def build_element(json):
     ovf_file = "%s/%s/%s.ovf" % (output_dir, vm_name, vm_name)
     ovf_file_mf = "%s/%s.ovf" % (vm_name, vm_name)
     product = json_vars['product']
+    category = json_vars['category']
     info = json_vars['info']
     icon = json_vars['icon']
 
@@ -68,7 +69,7 @@ def build_element(json):
     xml.set('{http://schemas.dmtf.org/ovf/envelope/1}class', 'OS')
     xml.set('{http://schemas.dmtf.org/ovf/envelope/1}instance', '')
     xml.set('{http://www.abiquo.com/appliancemanager/repositoryspace}DiskFormat', 'STREAM_OPTIMIZED')
-    xml.set('{http://www.abiquo.com/appliancemanager/repositoryspace}OVFCategories', 'Linux OS')
+    xml.set('{http://www.abiquo.com/appliancemanager/repositoryspace}OVFCategories', category)
     xml.set('{http://www.abiquo.com/appliancemanager/repositoryspace}OVFFile', ovf_file_mf)
 
     info_node = ET.Element('{http://schemas.dmtf.org/ovf/envelope/1}Info')
