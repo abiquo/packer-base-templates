@@ -2,10 +2,10 @@
 
 ISSUE=$(cat /etc/issue)
 
-if [[ "$ISSUE" == *"buntu"* ]]; then
+if [[ -x /usr/bin/apt-get ]]; then
   apt-get -y install open-vm-tools
-elif [[ "$ISSUE" == *"openSUSE"* ]]; then
+elif [[ -x /usr/bin/zypper ]]; then
   zypper -n --non-interactive install open-vm-tools
-else
+elif [ -x /usr/bin/yum ]; then
 	yum -y install open-vm-tools
 fi

@@ -1,33 +1,34 @@
 {
-  "variables": {
-    "abiquo_username": "{{env `ABIQUO_USERNAME`}}",
-    "abiquo_password": "{{env `ABIQUO_PASSWORD`}}"
-  },
   "builders": [
     {
       "type": "vmware-iso",
       "boot_command": [
-          "<enter><wait10><wait10>",
-          "sudo -i<enter>",
-          "systemctl stop sshd.socket<enter>",
-          "wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/coreos-install.yml<enter>",
-          "coreos-install -d /dev/sda -C {{user `channel`}} -c coreos-install.yml<enter>",
-          "<wait10><wait10><wait10><wait10><wait10><wait10>",
-          "reboot<enter>"
+        "<esc><wait>",
+        "install",
+        " auto",
+        " url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{ user `kickstart_file` }}",
+        " debian-installer=en_US",
+        " locale=en_US",
+        " keymap=us",
+        " netcfg/get_hostname={{user `vm_name`}}",
+        " netcfg/get_domain=localdomain ",
+        " net.ifnames=0",
+        " biosdevname=0",
+        "<enter>"
       ],
       "boot_wait": "5s",
       "disk_size": "{{user `disk_size`}}",
       "disk_type_id": "0",
       "vmdk_name": "{{user `vm_name`}}",
-      "guest_os_type": "other-64",
+      "guest_os_type": "debian8-64",
       "headless": "{{user `headless`}}",
       "http_directory": "{{user `http_directory`}}",
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
-      "shutdown_command": "sudo -S shutdown -P now",
-      "shutdown_timeout" : "30s",
-      "ssh_private_key_file": "{{user `ssh_key`}}",
+      "shutdown_command" : "poweroff",
+      "shutdown_timeout" : "120s",
+      "ssh_password": "{{user `ssh_password`}}",
       "ssh_port": "{{user `ssh_port`}}",
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_wait_timeout": "{{user `ssh_wait_timeout`}}",
@@ -42,9 +43,25 @@
   ],
   "provisioners": [
     {
+      "type": "file",
+      "source": "files/bash_aliases",
+      "destination": "/root/.bash_aliases"
+    },
+    {
+      "type": "file",
+      "source": "files/gitconfig",
+      "destination": "/root/.gitconfig"
+    },
+    {
       "type": "shell",
-      "environment_vars" : [],
+      "inline": "curl 'https://raw.githubusercontent.com/abiquo/abiquo-chef-agent/master/install/install-ubuntu-systemd.sh' | bash -l "
+    },
+    {
+      "type": "shell",
       "scripts": [
+        "scripts/ubuntu_packages.sh",
+        "scripts/ubuntu-cloud-init.sh",
+        "scripts/vmware-tools.sh",
         "scripts/finish.sh"
       ]
     }
@@ -58,23 +75,6 @@
       "type": "shell-local",
       "inline": "jq '.last_run_uuid as $p | .builds[] | select(.packer_run_uuid == $p) | .files[] | select(.name | contains(\"vmx\")) | select(.name | contains(\"vmxf\") | not ) | .name' {{user `vm_name`}}-manifest.json | xargs output_processors/file",
       "environment_vars": [ "OUTPUT_DIR={{user `output_dir`}}", "VM_NAME={{user `vm_name`}}" ] 
-    },
-    {
-      "type": "abiquo",
-      "api_url": "https://mothership.bcn.abiquo.com/api",
-      "api_username": "{{user `abiquo_username`}}",
-      "api_password": "{{user `abiquo_password`}}",
-      "datacenter": "Abiquo BCN",
-      "template_name": "{{user `vm_name`}}",
-      "description": "{{user `info`}} {{timestamp}}",
-      "category": "Linux Containers",
-      "cpu": "{{user `cpu`}}",
-      "ram_mb": "{{user `ram`}}",
-      "login_user": "{{user `ssh_username`}}",
-      "login_password": "{{user `ssh_password`}}",
-      "eth_driver": "VIRTIO",
-      "chef_enabled": "false",
-      "icon_url": "{{user `icon`}}"
     }
   ]
 }

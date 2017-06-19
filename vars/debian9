@@ -1,0 +1,21 @@
+{
+    "template": "templates/debian.json",
+    "info": "Log in as 'root' with password 'temporal'.",
+    "product": "Debian 9 Stretch x86_64",
+    "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/debian.png",
+    "headless": "false",
+    "vm_name": "debian9",
+    "output_dir": "resulting_images/",
+    "http_directory": "./http",
+    "iso_url": "http://cdimage.debian.org/cdimage/release/9.0.0/amd64/iso-dvd/debian-9.0.0-amd64-DVD-1.iso",
+    "iso_checksum": "f0a87f42ba0090314a4d3e45afe43d7fe7c115305bed266fe51a650c58cf3cab",
+    "iso_checksum_type": "sha256",
+    "ssh_port": "22",
+    "ssh_wait_timeout": "1h",
+    "ssh_password": "temporal",
+    "ssh_username": "root",
+    "cpu": "1",
+    "ram": "1024",
+    "disk_size": "10240",
+    "kickstart_file": "preseed-jessie.cfg"
+}

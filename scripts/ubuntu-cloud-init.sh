@@ -22,9 +22,13 @@ fi
 rm -rf /etc/cloud/*
 cp -rp $tmpcfg/* /etc/cloud/
 
-cat << ENOENT >> /etc/cloud/cloud.cfg
+if [ -f /etc/cloud/cloud.cfg.d/90_dpkg.cfg ]; then
+  sed -i 's,^datasource_list.*,datasource_list: [ ConfigDrive ],g' /etc/cloud/cloud.cfg.d/90_dpkg.cfg
+else
+  cat << ENOENT >> /etc/cloud/cloud.cfg
 datasource_list: [ ConfigDrive ]
 ENOENT
+fi
 sed s/disable_root.*/disable_root:\ 0/g /etc/cloud/cloud.cfg
 sed s/ssh_pwauth.*/ssh_pwauth:\ 1/g /etc/cloud/cloud.cfg
 
