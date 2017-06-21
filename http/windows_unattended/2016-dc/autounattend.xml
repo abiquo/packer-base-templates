@@ -36,7 +36,7 @@
                         </ModifyPartition>
                         <ModifyPartition wcm:action="add">
                             <Format>NTFS</Format>
-                            <Label>Windows 2016 TP5</Label>
+                            <Label>Windows 2016</Label>
                             <Letter>C</Letter>
                             <Order>2</Order>
                             <PartitionID>2</PartitionID>
@@ -51,7 +51,7 @@
                     <InstallFrom>
                         <MetaData wcm:action="add">
                             <Key>/IMAGE/NAME </Key>
-                            <Value>Windows Server 2016 Technical Preview 5 SERVERDATACENTER</Value>
+                            <Value>Windows Server 2016 SERVERDATACENTER</Value>
                         </MetaData>
                     </InstallFrom>
                     <InstallTo>
@@ -61,12 +61,6 @@
                 </OSImage>
             </ImageInstall>
             <UserData>
-                <ProductKey>
-                    <!-- Do not uncomment the Key element if you are using trial ISOs -->
-                    <!-- You must uncomment the Key element (and optionally insert your own key) if you are using retail or volume license ISOs -->
-                    <Key>6XBNX-4JQGW-QX6QG-74P76-72V67</Key>
-                    <WillShowUI>OnError</WillShowUI>
-                </ProductKey>
                 <AcceptEula>true</AcceptEula>
                 <FullName>Packer</FullName>
                 <Organization>Abiquo</Organization>
@@ -78,10 +72,9 @@
             <OEMInformation>
                 <HelpCustomized>false</HelpCustomized>
             </OEMInformation>
-            <ComputerName>win-2012-r2-dc</ComputerName>
+            <ComputerName>win-2016-std</ComputerName>
             <TimeZone>Romance Standard Time</TimeZone>
             <RegisteredOwner/>
-            <ProductKey>6XBNX-4JQGW-QX6QG-74P76-72V67</ProductKey>
         </component>
         <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-ServerManager-SvrMgrNc" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
             <DoNotOpenServerManagerAtLogon>true</DoNotOpenServerManagerAtLogon>
@@ -161,13 +154,11 @@
                     <Order>98</Order>
                     <Description>Enable Microsoft Updates</Description>
                 </SynchronousCommand>
-                <!--
-                <SynchronousCommand wcm:action="add">
-                    <CommandLine>cscript a:\win-updates.vbs</CommandLine>
+                <!-- <SynchronousCommand wcm:action="add">
+                    <CommandLine>cscript a:\win-updates.ps1</CommandLine>
                     <Description>Install Windows Updates</Description>
                     <Order>100</Order>
-                </SynchronousCommand>
-                -->
+                </SynchronousCommand> -->
                 <SynchronousCommand wcm:action="add">
                     <CommandLine>cmd.exe /c winrm quickconfig -transport:http</CommandLine>
                     <Description>winrm quickconfig -transport:http</Description>
@@ -228,17 +219,9 @@
                     <Order>210</Order>
                     <RequiresUserInput>true</RequiresUserInput>
                 </SynchronousCommand>
-                <!--
                 <SynchronousCommand wcm:action="add">
                     <CommandLine>powershell.exe -File a:\openssh.ps1 -AutoStart</CommandLine>
                     <Description>Install OpenSSH</Description>
-                    <Order>300</Order>
-                    <RequiresUserInput>true</RequiresUserInput>
-                </SynchronousCommand>
-                -->
-                <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\win-updates.ps1</CommandLine>
-                    <Description>Install Windows Updates</Description>
                     <Order>300</Order>
                     <RequiresUserInput>true</RequiresUserInput>
                 </SynchronousCommand>
@@ -266,5 +249,5 @@
             <EnableLUA>false</EnableLUA>
         </component>
     </settings>
-    <cpi:offlineImage xmlns:cpi="urn:schemas-microsoft-com:cpi" cpi:source="wim:c:/wim/install.wim#Windows Server 2012 R2 SERVERSTANDARD"/>
+    <cpi:offlineImage xmlns:cpi="urn:schemas-microsoft-com:cpi" cpi:source="wim:c:/wim/install.wim#Windows Server 2016 SERVERSTANDARD"/>
 </unattend>
