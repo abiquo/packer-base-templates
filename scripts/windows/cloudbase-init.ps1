@@ -16,16 +16,12 @@ if ($p.ExitCode -ne 0) {
 $Host.UI.RawUI.WindowTitle = "Running Cloudbase-Init SetSetupComplete..."
 & "${env:ProgramFiles}\Cloudbase Solutions\Cloudbase-Init\bin\SetSetupComplete.cmd"
 
-$MDS = "metadata_services='cloudbaseinit.metadata.services.configdrive.ConfigDriveService'"
-$FLB = "first_logon_behaviour=no"
-$ConfFile = "${env:ProgramFiles}\Cloudbase Solutions\Cloudbase-Init\conf\cloudbase-init.conf"
-$ConfFileUnattend = "${env:ProgramFiles}\Cloudbase Solutions\Cloudbase-Init\conf\cloudbase-init-unattend.conf"
-Add-Content $ConfFile $MDS
-Add-Content $ConfFile $FLB
-Add-Content $ConfFileUnattend $MDS
-Add-Content $ConfFileUnattend $FLB
+$ConfPath = "${env:ProgramFiles}\Cloudbase Solutions\Cloudbase-Init\conf"
+$ConfFile = "cloudbase-init.conf"
+$ConfFileUnattend = "cloudbase-init-unattend.conf"
 
-# Start-Sleep -s 1000
+copy-item -Force A:\$ConfFile $ConfPath\$ConfFile
+copy-item -Force A:\$ConfFileUnattend $ConfPath\$ConfFileUnattend
 
 $Host.UI.RawUI.WindowTitle = "Running Sysprep..."
 $unattendedXmlPath = "${env:ProgramFiles}\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml"

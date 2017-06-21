@@ -26,7 +26,9 @@
         "./scripts/windows/microsoft-updates.bat",
         "./scripts/windows/openssh.ps1",
         "./scripts/windows/win-updates.ps1",
-        "./scripts/windows/cloudbase-init.ps1"
+        "./files/cloudbase-init.conf",
+        "./files/cloudbase-init-unattend.conf",
+        "./files/virtio-cert.cer"
       ],
       "vmx_data": {
         "memsize": "{{user `ram`}}",
@@ -69,8 +71,11 @@
       "inline": "msdtc -install"
     },
     {
-      "type": "windows-shell",
-      "inline": "powershell.exe -File a:\\cloudbase-init.ps1"
+      "type": "powershell",
+      "scripts": [
+        "./scripts/windows/virtio.ps1",
+        "./scripts/windows/cloudbase-init.ps1"
+      ]
     }
   ],
   "post-processors": [

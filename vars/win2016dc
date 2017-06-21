@@ -1,0 +1,23 @@
+{
+    "template": "templates/windows.json",
+    "info": "Log in as 'administrator' with password 'Abiqu0!$'.",
+    "product": "Windows Server 2016 Datacenter Edition",
+    "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/windows.png",
+    "category": "Windows OS",
+    "headless": "false",
+    "vm_name": "win2016-dc",
+    "output_dir": "resulting_images/",
+    "http_directory": "./http",
+    "iso_url": "http://care.dlservice.microsoft.com/dl/download/1/6/F/16FA20E6-4662-482A-920B-1A45CF5AAE3C/14393.0.160715-1616.RS1_RELEASE_SERVER_EVAL_X64FRE_EN-US.ISO",
+    "iso_checksum": "18a4f00a675b0338f3c7c93c4f131beb",
+    "iso_checksum_type": "md5",
+    "ssh_port": "22",
+    "ssh_wait_timeout": "10h",
+    "ssh_password": "Abiqu0!$",
+    "ssh_username": "Administrator",
+    "shutdown_command": "1h",
+    "cpu": "2",
+    "ram": "4096",
+    "disk_size": "20480",
+    "autounattend": "./http/windows_unattended/2016-dc/autounattend.xml"
+}
