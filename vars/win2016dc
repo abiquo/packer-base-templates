@@ -2,7 +2,7 @@
     "template": "templates/windows.json",
     "info": "Log in as 'administrator' with password 'Abiqu0!$'.",
     "product": "Windows Server 2016 Datacenter Edition",
-    "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/windows.png",
+    "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/win2016-dc.png",
     "category": "Windows OS",
     "headless": "false",
     "vm_name": "win2016-dc",
