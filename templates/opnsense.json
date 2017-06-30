@@ -16,7 +16,7 @@
         "echo 'PasswordAuthentication yes' >> /usr/local/etc/ssh/sshd_config<enter>",
         "/usr/local/etc/rc.installer<enter><wait5>",
         "<enter><wait><wait><enter><wait><wait><enter><wait><wait><enter><wait><wait><enter>",
-        "<wait10><wait10><wait10><wait10><wait10><wait10><enter>"
+        "<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><enter>"
       ],
       "boot_wait": "100s",
       "disk_size": "{{user `disk_size`}}",
