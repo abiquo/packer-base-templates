@@ -15,7 +15,8 @@
         "GET /{{user `kickstart_file`}} HTTP/1.0<enter><enter>",
         "echo 'PasswordAuthentication yes' >> /usr/local/etc/ssh/sshd_config<enter>",
         "/usr/local/etc/rc.installer<enter><wait5>",
-        "<enter><wait><enter><wait><enter><wait><enter><wait><enter><wait10><wait10><wait10><wait10><wait10><wait10><enter>"
+        "<enter><wait><wait><enter><wait><wait><enter><wait><wait><enter><wait><wait><enter>",
+        "<wait10><wait10><wait10><wait10><wait10><wait10><enter>"
       ],
       "boot_wait": "100s",
       "disk_size": "{{user `disk_size`}}",
