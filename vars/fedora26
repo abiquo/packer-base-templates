@@ -1,0 +1,23 @@
+{
+    "template": "templates/fedora.json",
+    "info": "Log in as 'root' with password 'temporal'.",
+    "product": "Fedora 26 x86_64",
+    "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/fedora25.png",
+    "category": "Linux OS - Fedora",
+    "headless": "false",
+    "vm_name": "fedora26",
+    "output_dir": "resulting_images/",
+    "http_directory": "./http",
+    "iso_url": "http://ftp.cica.es/fedora/linux/releases/26/Server/x86_64/iso/Fedora-Server-netinst-x86_64-26-1.5.iso",
+    "iso_checksum": "e260921ef5c7bd5ee2a7b2f2f1156af6483014c73984e4cf37f2b6690e0155e5",
+    "iso_checksum_type": "sha256",
+    "ssh_port": "22",
+    "ssh_wait_timeout": "1h",
+    "ssh_password": "temporal",
+    "ssh_username": "root",
+    "cpu": "1",
+    "ram": "1024",
+    "disk_size": "10240",
+    "kickstart_file": "anaconda-ks-f25.cfg",
+    "chef_agent_script": "https://raw.githubusercontent.com/abiquo/abiquo-chef-agent/master/install/install-centos-7.sh"
+}
