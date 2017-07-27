@@ -8,6 +8,7 @@ import subprocess
 import lxml.etree as ET
 import time
 from datetime import datetime
+from os.path import isfile, join
 
 parser = argparse.ArgumentParser(description='Build Packer Template')
 parser.add_argument('--debug', dest='debug', help='enable verbose logging', action='store_true')
@@ -121,7 +122,8 @@ if __name__ == "__main__":
     
     if args.varfile == 'ALL':
         files = os.listdir('vars')
-        files = map(lambda x: "vars/%s" % x, files)
+        files = filter(lambda x: isfile(join('vars', x)), files)
+        files = map(lambda x: join("vars", x), files)
     else:
         files = args.varfile.split(',')
 
