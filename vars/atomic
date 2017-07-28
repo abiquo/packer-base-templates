@@ -1,0 +1,22 @@
+{
+    "template": "templates/atomic.json",
+    "info": "Log in as 'root' with password 'temporal'.",
+    "product": "Centos 7 Atomic Host x86_64",
+    "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/atomic.png",
+    "category": "Linux Containers",
+    "headless": "false",
+    "vm_name": "centos7atomic",
+    "output_dir": "resulting_images/",
+    "http_directory": "./http",
+    "iso_url": "http://cloud.centos.org/centos/7/atomic/images/CentOS-Atomic-Host-7.1706-Installer.iso",
+    "iso_checksum": "e15dded673f21e094ecc13d498bf9d3f8cf8653282cd1c83e5d163ce47bc5c4f",
+    "iso_checksum_type": "sha256",
+    "ssh_port": "22",
+    "ssh_wait_timeout": "1h",
+    "ssh_password": "temporal",
+    "ssh_username": "root",
+    "cpu": "1",
+    "ram": "1024",
+    "disk_size": "10240",
+    "kickstart_file": "anaconda-ks-atomic.cfg"
+}
