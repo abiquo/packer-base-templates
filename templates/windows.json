@@ -55,6 +55,12 @@
       ]
     },
     {
+      "type": "powershell",
+      "scripts": [
+        "./scripts/windows/virtio.ps1"
+      ]
+    },
+    {
       "type": "windows-restart",
       "restart_timeout": "30m"
     },
@@ -64,16 +70,20 @@
     },
     {
       "type": "windows-shell",
-      "inline": "msdtc -uninstall"
+      "inline": [
+        "msdtc -uninstall",
+        "msdtc -install"
+      ]
     },
     {
       "type": "windows-shell",
-      "inline": "msdtc -install"
+      "scripts": [
+        "./scripts/windows/compact.bat"
+      ]
     },
     {
       "type": "powershell",
       "scripts": [
-        "./scripts/windows/virtio.ps1",
         "./scripts/windows/cloudbase-init.ps1"
       ]
     }
