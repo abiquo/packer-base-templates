@@ -1,0 +1,23 @@
+{
+    "template": "templates/opensuse.json",
+    "info": "Log in as 'root' with password 'temporal'.",
+    "product": "openSUSE 42.3 x86_64",
+    "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/opensuse-42.2.png",
+    "category": "Linux OS - openSuSe",
+    "headless": "false",
+    "vm_name": "opensuse-42.3",
+    "output_dir": "resulting_images",
+    "http_directory": "./http",
+    "iso_url": "http://download.opensuse.org/distribution/leap/42.3/iso/openSUSE-Leap-42.3-NET-x86_64.iso",
+    "iso_checksum": "d1a17116cf33a5582b83ef479d7b151b33938e60f07eebc544abf162e2aa5c12",
+    "iso_checksum_type": "sha256",
+    "ssh_port": "22",
+    "ssh_wait_timeout": "1h",
+    "ssh_password": "temporal",
+    "ssh_username": "root",
+    "cpu": "1",
+    "ram": "1024",
+    "disk_size": "10240",
+    "kickstart_file": "openSUSE-leap-42.3.xml",
+    "install_repo": "http://download.opensuse.org/distribution/leap/42.3/repo/oss/"
+}
