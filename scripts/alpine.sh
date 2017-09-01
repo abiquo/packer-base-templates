@@ -24,12 +24,16 @@ echo 'RNGD_OPTS="--no-drng=1 --no-tpm=1 -r /dev/urandom"' > /etc/conf.d/rngd
 rc-update add rngd boot
 
 # Change default ash to bash
-apk --update add bash
+apk --update add bash sudo
 sed -i 's,/bin/ash,/bin/bash,g' /etc/passwd
 
 rm -rf /etc/ssh/ssh_host_*
 cat <<EOF >> /etc/ssh/sshd_config
 UseDNS no
+EOF
+
+cat <<EOF > /etc/profile.d/aliases.sh
+alias ll="ls -l --color"
 EOF
 
 # Try to make it boot in Hyper-V

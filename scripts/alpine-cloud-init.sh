@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 apk --update add py-setuptools py-urllib3 py-chardet py-certifi py-idna cloud-init
 
@@ -28,3 +28,6 @@ rc-update add cloud-init default
 cd
 rm -rf $tmpcfg
 rm -rf $tmpdir
+
+# Make sure CD support is loaded on boot
+echo "iso9660" >> /etc/modules
