@@ -9,12 +9,8 @@ yum -y install ntp curl vim htop ccze wget git yum-utils unzip yum-cron kernel-d
 
 if [ -x "/usr/bin/systemctl" ]; then
   systemctl enable haveged
+  systemctl disable NetworkManager
+  systemctl stop NetworkManager; ifdown eth0; ifup eth0
 else
   chkconfig haveged on
 fi
-
-# cat << ENOENT >> /etc/cloud/cloud.cfg
-# datasource_list: [ ConfigDrive ]
-# ENOENT
-# sed s/disable_root.*/disable_root:\ 0/g /etc/cloud/cloud.cfg
-# sed s/ssh_pwauth.*/ssh_pwauth:\ 1/g /etc/cloud/cloud.cfg
