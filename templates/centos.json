@@ -51,10 +51,6 @@
     },
     {
       "type": "shell",
-      "inline": "curl '{{user `chef_agent_script`}}' | bash -l "
-    },
-    {
-      "type": "shell",
       "scripts": [
         "scripts/centos_packages.sh",
         "scripts/vmware-tools.sh",

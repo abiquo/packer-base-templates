@@ -45,7 +45,6 @@
         "scripts/opensuse-dhclient.sh",
         "scripts/vmware-tools.sh",
         "scripts/ruby-deps.sh",
-        "scripts/chef-agent-opensuse.sh",
         "scripts/opensuse-cloudinit.sh",
         "scripts/finish.sh"
       ]

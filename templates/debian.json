@@ -58,10 +58,6 @@
     },
     {
       "type": "shell",
-      "inline": "curl 'https://raw.githubusercontent.com/abiquo/abiquo-chef-agent/master/install/install-ubuntu-systemd.sh' | bash -l "
-    },
-    {
-      "type": "shell",
       "scripts": [
         "scripts/ubuntu_packages.sh",
         "scripts/ubuntu-cloud-init.sh",

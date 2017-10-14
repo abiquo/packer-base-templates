@@ -18,6 +18,5 @@
     "cpu": "1",
     "ram": "1024",
     "disk_size": "10240",
-    "kickstart_file": "anaconda-ks-f25.cfg",
-    "chef_agent_script": "https://raw.githubusercontent.com/abiquo/abiquo-chef-agent/master/install/install-centos-7.sh"
+    "kickstart_file": "anaconda-ks-f25.cfg"
 }
