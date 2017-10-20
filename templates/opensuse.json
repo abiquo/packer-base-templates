@@ -42,9 +42,7 @@
     {
       "type": "shell",
       "scripts": [
-        "scripts/opensuse-dhclient.sh",
         "scripts/vmware-tools.sh",
-        "scripts/ruby-deps.sh",
         "scripts/opensuse-cloudinit.sh",
         "scripts/finish.sh"
       ]
