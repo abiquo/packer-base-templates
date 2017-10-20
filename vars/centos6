@@ -2,7 +2,7 @@
     "template": "templates/centos.json",
     "info": "Log in as 'root' with password 'temporal'.",
     "product": "Centos 6 x86_64",
-    "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/centos6.png",
+    "icon": "https://abiquo-icons.s3.amazonaws.com/centos6.png",
     "category": "Linux OS - CentOS",
     "headless": "false",
     "vm_name": "centos6",

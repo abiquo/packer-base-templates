@@ -2,7 +2,7 @@
     "template": "templates/debian.json",
     "info": "Log in as 'root' with password 'temporal'.",
     "product": "Debian 9 Stretch x86_64",
-    "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/debian.png",
+    "icon": "https://abiquo-icons.s3.amazonaws.com/debian.png",
     "category": "Linux OS - Debian",
     "headless": "false",
     "vm_name": "debian9",

@@ -3,7 +3,7 @@
     "template": "templates/coreos.json",
     "info": "CoreOS stable. Use cloud-init script to configure.",
     "product": "CoreOS x86_64",
-    "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/coreos.png",
+    "icon": "https://abiquo-icons.s3.amazonaws.com/coreos.png",
     "category": "Linux Containers",
     "headless": "false",
     "vm_name": "coreos-stable",

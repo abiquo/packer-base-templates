@@ -1,0 +1,23 @@
+{
+    "template": "templates/opensuse.json",
+    "info": "Log in as 'root' with password 'temporal'.",
+    "product": "openSUSE Tumbleweed x86_64",
+    "icon": "https://abiquo-icons.s3.amazonaws.com/opensuse-tumbleweed.png",
+    "category": "Linux OS - openSuSe",
+    "headless": "false",
+    "vm_name": "opensuse-tumbleweed",
+    "output_dir": "resulting_images",
+    "http_directory": "./http",
+    "iso_url": "http://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-NET-x86_64-Current.iso",
+    "iso_checksum": "8df71da51cdf7c5056f92c5331841a7e60545efddcfa585164828ab97ce6119e",
+    "iso_checksum_type": "sha256",
+    "ssh_port": "22",
+    "ssh_wait_timeout": "1h",
+    "ssh_password": "temporal",
+    "ssh_username": "root",
+    "cpu": "1",
+    "ram": "1024",
+    "disk_size": "10240",
+    "kickstart_file": "openSUSE-tumbleweed.xml",
+    "install_repo": "http://download.opensuse.org/tumbleweed/repo/oss/"
+}

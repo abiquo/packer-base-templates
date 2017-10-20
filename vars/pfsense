@@ -2,7 +2,7 @@
     "template": "templates/pfsense.json",
     "info": "Log in as 'admin' with password 'pfsense'. em0 is assigned as WAN interface.",
     "product": "pfSense CE 2.3.4",
-    "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/pfsense.png",
+    "icon": "https://abiquo-icons.s3.amazonaws.com/pfsense.png",
     "category": "Router / FW",
     "headless": "false",
     "vm_name": "pfsense",

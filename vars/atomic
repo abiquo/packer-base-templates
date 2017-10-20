@@ -2,7 +2,7 @@
     "template": "templates/atomic.json",
     "info": "Log in as 'root' with password 'temporal'.",
     "product": "Centos 7 Atomic Host x86_64",
-    "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/atomic.png",
+    "icon": "https://abiquo-icons.s3.amazonaws.com/atomic.png",
     "category": "Linux Containers",
     "headless": "false",
     "vm_name": "centos7atomic",

@@ -2,7 +2,7 @@
     "template": "templates/alpine.json",
     "info": "Log in as 'root' with password 'temporal'.",
     "product": "Alpine Linux",
-    "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/alpine.png",
+    "icon": "https://abiquo-icons.s3.amazonaws.com/alpine.png",
     "category": "Linux OS - Alpine",
     "headless": "false",
     "vm_name": "alpine",

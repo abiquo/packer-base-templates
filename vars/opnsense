@@ -2,7 +2,7 @@
     "template": "templates/opnsense.json",
     "info": "Log in as 'root' with password 'opnsense'. em0 is assigned as LAN interface.",
     "product": "OPNsense 17.1.4",
-    "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/opnsense.png",
+    "icon": "https://abiquo-icons.s3.amazonaws.com/opnsense.png",
     "category": "Router / FW",
     "headless": "false",
     "vm_name": "opnsense",

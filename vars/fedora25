@@ -2,7 +2,7 @@
     "template": "templates/fedora.json",
     "info": "Log in as 'root' with password 'temporal'.",
     "product": "Fedora 25 x86_64",
-    "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/fedora25.png",
+    "icon": "https://abiquo-icons.s3.amazonaws.com/fedora.png",
     "category": "Linux OS - Fedora",
     "headless": "false",
     "vm_name": "fedora25",
