@@ -35,6 +35,7 @@
         "numvcpus": "{{user `cpu`}}",
         "scsi0.virtualDev": "lsisas1068"
       },
+      "vmdk_name": "{{user `vm_name`}}",
       "output_directory": "output-{{user `vm_name`}}-vmware",
       "vnc_bind_address": "0.0.0.0"
     }
