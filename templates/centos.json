@@ -24,7 +24,7 @@
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "shutdown_command" : "shutdown -h now",
-      "shutdown_timeout" : "30s",
+      "shutdown_timeout" : "300s",
       "ssh_password": "{{user `ssh_password`}}",
       "ssh_port": "{{user `ssh_port`}}",
       "ssh_username": "{{user `ssh_username`}}",
