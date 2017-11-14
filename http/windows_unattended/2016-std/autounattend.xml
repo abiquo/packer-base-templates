@@ -154,11 +154,11 @@
                     <Order>98</Order>
                     <Description>Enable Microsoft Updates</Description>
                 </SynchronousCommand>
-                <!-- <SynchronousCommand wcm:action="add">
+                <SynchronousCommand wcm:action="add">
                     <CommandLine>cscript a:\win-updates.ps1</CommandLine>
                     <Description>Install Windows Updates</Description>
                     <Order>100</Order>
-                </SynchronousCommand> -->
+                </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
                     <CommandLine>cmd.exe /c winrm quickconfig -transport:http</CommandLine>
                     <Description>winrm quickconfig -transport:http</Description>

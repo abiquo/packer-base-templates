@@ -149,6 +149,7 @@
             <package>yast2-installation</package>
             <package>yast2-network</package>
             <package>NetworkManager</package>
+            <package>jq</package>
       <package>yast2-theme-openSUSE</package>
       <package>iputils</package>
       <package>vim</package>

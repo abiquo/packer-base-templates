@@ -5,7 +5,7 @@ echo "add_drivers+=\"virtio virtio_blk virtio_net virtio_pci\"" >> /etc/dracut.c
 
 yum -y install epel-release
 yum -y update
-yum -y install ntp curl vim htop ccze wget git yum-utils unzip yum-cron kernel-devel bash-completion make gcc gcc-c++ haveged
+yum -y install ntp curl vim htop ccze wget git yum-utils unzip yum-cron kernel-devel bash-completion make gcc gcc-c++ haveged jq
 
 if [ -x "/usr/bin/systemctl" ]; then
   systemctl enable haveged
