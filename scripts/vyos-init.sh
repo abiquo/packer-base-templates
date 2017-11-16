@@ -1,22 +1,18 @@
-#!/bin/bash
+# #!/bin/bash
+source /opt/vyatta/etc/functions/script-template
 
-set -e
-set -x
+# Add Debian Jessie repository
+set system package repository squeeze url 'http://archive.debian.org/debian'
+set system package repository squeeze distribution 'squeeze'
+set system package repository squeeze components 'main contrib non-free'
+commit
+save
 
-sudo sed -i -e 's,^.*:/sbin/getty\s\+.*\s\+tty[2-6],#\0,' /etc/inittab
-
-WRAPPER=/opt/vyatta/sbin/vyatta-cfg-cmd-wrapper
-
-$WRAPPER begin
-$WRAPPER set system package repository community components 'main'
-$WRAPPER set system package repository community distribution 'current'
-$WRAPPER set system package repository community url 'http://dev.packages.vyos.net/vyos'
-$WRAPPER set system package repository squeeze components 'main contrib non-free'
-$WRAPPER set system package repository squeeze distribution 'squeeze'
-$WRAPPER set system package repository squeeze url 'http://archive.debian.org/debian'
-$WRAPPER commit
-$WRAPPER save
-$WRAPPER end
-
-sudo apt-get -y update
+# Install open-vm-tools
+sudo apt-get update
 sudo apt-get -y install open-vm-tools
+
+# Delete Debian Jessie repository
+delete system package repository squeeze
+commit
+save
