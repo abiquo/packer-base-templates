@@ -1,0 +1,22 @@
+{
+    "template": "templates/rancheros.json",
+    "info": "RancherOS 1.1.0 is a fast, ultra-lightweight container OS. Use cloud-init script to configure.",
+    "product": "RancherOS 1.1.0 x86_64",
+    "icon": "https://abiquo-icons.s3.amazonaws.com/rancheros.png",
+    "category": "Linux Containers",
+    "headless": "false",
+    "vm_name": "rancheros",
+    "output_dir": "resulting_images/",
+    "http_directory": "./http",
+    "iso_url": "https://github.com/rancher/os/releases/download/v1.1.0/rancheros.iso",
+    "iso_checksum": "ed57aa0fe6807c50d2969275c3fa3c480bba5f1715ad0a83e2a4a9d96c5ec53d",
+    "iso_checksum_type": "sha256",
+    "ssh_port": "22",
+    "ssh_wait_timeout": "1h",
+    "ssh_password": "rancher",
+    "ssh_username": "rancher",
+    "cpu": "1",
+    "ram": "1024",
+    "disk_size": "10240",
+    "kickstart_file": "notused"
+  }
