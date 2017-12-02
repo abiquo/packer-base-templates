@@ -1,0 +1,22 @@
+{
+    "template": "templates/fedora.json",
+    "info": "Log in as 'root' with password 'temporal'.",
+    "product": "Fedora 27 x86_64",
+    "icon": "https://abiquo-icons.s3.amazonaws.com/fedora.png",
+    "category": "Linux OS - Fedora",
+    "headless": "false",
+    "vm_name": "fedora27",
+    "output_dir": "resulting_images/",
+    "http_directory": "./http",
+    "iso_url": "https://download.fedoraproject.org/pub/fedora/linux/modular/releases/test/27_Modular_Beta/Server/x86_64/iso/Fedora-Modular-Server-netinst-x86_64-27_Beta-1.5.iso",
+    "iso_checksum": "eecbc190b0e07c519560491b65ce414ff5894f626e5c1f55081f14c6f38fd7aa",
+    "iso_checksum_type": "sha256",
+    "ssh_port": "22",
+    "ssh_wait_timeout": "1h",
+    "ssh_password": "temporal",
+    "ssh_username": "root",
+    "cpu": "1",
+    "ram": "1024",
+    "disk_size": "10240",
+    "kickstart_file": "anaconda-ks-f25.cfg"
+}
