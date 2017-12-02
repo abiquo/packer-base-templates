@@ -43,7 +43,7 @@ def parse_ovfindex(ovfindex_file, element):
     else:
         xml = ET.Element("{http://www.abiquo.com/appliancemanager/repositoryspace}RepositorySpace", 
             nsmap=NSMAP)
-        xml.set('{http://www.abiquo.com/appliancemanager/repositoryspace}RepositoryName', 'Repository 3.0')
+        xml.set('{http://www.abiquo.com/appliancemanager/repositoryspace}RepositoryName', 'Abiquo Repository')
         xml.set('{http://www.abiquo.com/appliancemanager/repositoryspace}RepositoryURI', 'http://s3-eu-west-1.amazonaws.com/abiquo-repository/ovfindex.xml')
         xml.append(element)
     return xml
