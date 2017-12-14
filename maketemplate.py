@@ -21,9 +21,9 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 NSMAP = {'ns0': 'http://www.abiquo.com/appliancemanager/repositoryspace',
-      'ns1': 'http://schemas.dmtf.org/ovf/envelope/1',
-      'ns2': 'http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData',
-      'ns3': 'http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingData'}
+         'ns1': 'http://schemas.dmtf.org/ovf/envelope/1',
+         'ns2': 'http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData',
+         'ns3': 'http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingData'}
 
 def parse_ovfindex(ovfindex_file, element):
     if os.path.isfile(ovfindex_file):
@@ -143,6 +143,9 @@ if __name__ == "__main__":
             outdir = os.environ['OUTPUT_DIR']
             json_vars['output_dir'] = outdir
             logger.info('Using output dir %s' % outdir)
+
+        if 'KEEP_OVF' in os.environ.keys() and os.environ['KEEP_OVF'] == 'true':
+            json_vars['keep_ovf'] = "true"
 
         if args.packer:
             packer_cmd = args.packer
