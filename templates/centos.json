@@ -61,13 +61,11 @@
   ],
   "post-processors": [
     {
-      "type": "manifest",
-      "output": "{{user `vm_name`}}-manifest.json"
-    },
-    {
-      "type": "shell-local",
-      "inline": "jq '.last_run_uuid as $p | .builds[] | select(.packer_run_uuid == $p) | .files[] | select(.name | contains(\"vmx\")) | select(.name | contains(\"vmxf\") | not ) | .name' {{user `vm_name`}}-manifest.json | xargs output_processors/file",
-      "environment_vars": [ "OUTPUT_DIR={{user `output_dir`}}", "VM_NAME={{user `vm_name`}}" ] 
+      "type": "ovftool",
+      "target_format": "ova",
+      "appliance_name": "{{user `vm_name`}}",
+      "output_dir": "{{user `output_dir`}}",
+      "keep_ovf": "{{user `keep_ovf`}}"
     },
     {
       "type": "abiquo",
