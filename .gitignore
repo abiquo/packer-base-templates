@@ -3,3 +3,4 @@ packer_cache/
 *-manifest.json
 output-*-vmware
 resulting_images/
+*.DS_Store*
