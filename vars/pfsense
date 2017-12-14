@@ -1,5 +1,6 @@
 {
     "template": "templates/pfsense.json",
+    "keep_ovf": "false",
     "info": "Log in as 'admin' with password 'pfsense'. em0 is assigned as WAN interface.",
     "product": "pfSense CE 2.3.4",
     "icon": "https://abiquo-icons.s3.amazonaws.com/pfsense.png",

@@ -1,5 +1,6 @@
 {
     "template": "templates/centos.json",
+    "keep_ovf": "false",
     "info": "Log in as 'root' with password 'temporal'.",
     "product": "Centos 6 x86_64",
     "icon": "https://abiquo-icons.s3.amazonaws.com/centos6.png",

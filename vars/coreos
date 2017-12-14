@@ -1,5 +1,6 @@
 {
     "channel": "stable",
+    "keep_ovf": "false",
     "template": "templates/coreos.json",
     "info": "CoreOS stable. Use cloud-init script to configure.",
     "product": "CoreOS x86_64",

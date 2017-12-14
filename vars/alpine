@@ -1,5 +1,6 @@
 {
     "template": "templates/alpine.json",
+    "keep_ovf": "false",
     "info": "Log in as 'root' with password 'temporal'.",
     "product": "Alpine Linux",
     "icon": "https://abiquo-icons.s3.amazonaws.com/alpine.png",

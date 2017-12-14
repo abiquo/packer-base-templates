@@ -1,5 +1,6 @@
 {
     "template": "templates/vyos.json",
+    "keep_ovf": "false",
     "info": "Log in as 'admin' with password 'admin'.",
     "product": "VyOS 1.1.8",
     "icon": "https://abiquo-icons.s3.amazonaws.com/vyos.png",

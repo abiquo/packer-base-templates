@@ -1,5 +1,6 @@
 {
     "template": "templates/rancheros.json",
+    "keep_ovf": "false",
     "info": "RancherOS 1.1.0 is a fast, ultra-lightweight container OS. Use cloud-init script to configure.",
     "product": "RancherOS 1.1.0 x86_64",
     "icon": "https://abiquo-icons.s3.amazonaws.com/rancheros.png",

@@ -1,5 +1,6 @@
 {
     "template": "templates/fedora.json",
+    "keep_ovf": "false",
     "info": "Log in as 'root' with password 'temporal'.",
     "product": "Fedora 27 x86_64",
     "icon": "https://abiquo-icons.s3.amazonaws.com/fedora.png",
