@@ -25,4 +25,4 @@ copy-item -Force A:\$ConfFileUnattend $ConfPath\$ConfFileUnattend
 
 $Host.UI.RawUI.WindowTitle = "Running Sysprep..."
 $unattendedXmlPath = "${env:ProgramFiles}\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml"
-& "${env:SystemRoot}\System32\Sysprep\Sysprep.exe" `/generalize `/oobe `/quit `/unattend:"$unattendedXmlPath"
+"${env:SystemRoot}\System32\Sysprep\Sysprep.exe" /generalize /oobe /quit "/unattend:$unattendedXmlPath"

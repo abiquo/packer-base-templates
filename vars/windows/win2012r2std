@@ -15,6 +15,7 @@
     "ssh_wait_timeout": "10h",
     "ssh_password": "Abiqu0!$",
     "ssh_username": "Administrator",
+    "guest_os": "windows8srv-64",
     "shutdown_command": "1h",
     "cpu": "2",
     "ram": "4096",

@@ -155,11 +155,6 @@
                     <Description>Enable Microsoft Updates</Description>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
-                    <CommandLine>cscript a:\win-updates.ps1</CommandLine>
-                    <Description>Install Windows Updates</Description>
-                    <Order>100</Order>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
                     <CommandLine>cmd.exe /c winrm quickconfig -transport:http</CommandLine>
                     <Description>winrm quickconfig -transport:http</Description>
                     <Order>110</Order>
@@ -217,18 +212,6 @@
                     <CommandLine>cmd.exe /c netsh firewall add portopening TCP 5985 "Port 5985" </CommandLine>
                     <Description>Win RM port open</Description>
                     <Order>210</Order>
-                    <RequiresUserInput>true</RequiresUserInput>
-                </SynchronousCommand>
-                <!-- <SynchronousCommand wcm:action="add">
-                    <CommandLine>powershell.exe -File a:\cloudbase-init.ps1</CommandLine>
-                    <Description>Install Cloudbase Init</Description>
-                    <Order>220</Order>
-                    <RequiresUserInput>true</RequiresUserInput>
-                </SynchronousCommand> -->
-                <SynchronousCommand wcm:action="add">
-                    <CommandLine>powershell.exe -File a:\openssh.ps1 -AutoStart</CommandLine>
-                    <Description>Install OpenSSH</Description>
-                    <Order>301</Order>
                     <RequiresUserInput>true</RequiresUserInput>
                 </SynchronousCommand>
             </FirstLogonCommands>

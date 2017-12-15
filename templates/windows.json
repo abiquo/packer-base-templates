@@ -12,20 +12,22 @@
       "iso_checksum": "{{user `iso_checksum`}}",
       "headless": "{{user `headless`}}",
       "boot_wait": "2m",
+      "communicator": "winrm",
+      "winrm_username": "{{user `ssh_username`}}",
+      "winrm_password": "{{user `ssh_password`}}",
+      "winrm_timeout": "{{user `ssh_wait_timeout`}}",
       "ssh_wait_timeout": "{{user `ssh_wait_timeout`}}",
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_password": "{{user `ssh_password`}}",
       "shutdown_timeout": "{{user `shutdown_timeout`}}",
       "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
-      "guest_os_type": "windows8srv-64",
+      "guest_os_type": "{{user `guest_os`}}",
       "tools_upload_flavor": "windows",
       "disk_size": "{{user `disk_size`}}",
       "disk_type_id": "0",
       "floppy_files": [
         "{{user `autounattend`}}",
         "./scripts/windows/microsoft-updates.bat",
-        "./scripts/windows/openssh.ps1",
-        "./scripts/windows/win-updates.ps1",
         "./files/cloudbase-init.conf",
         "./files/cloudbase-init-unattend.conf",
         "./files/virtio-cert.cer"
@@ -58,7 +60,8 @@
     {
       "type": "powershell",
       "scripts": [
-        "./scripts/windows/virtio.ps1"
+        "./scripts/windows/virtio.ps1",
+        "./scripts/windows/updates.ps1"
       ]
     },
     {
@@ -77,12 +80,6 @@
       ]
     },
     {
-      "type": "windows-shell",
-      "scripts": [
-        "./scripts/windows/compact.bat"
-      ]
-    },
-    {
       "type": "powershell",
       "scripts": [
         "./scripts/windows/cloudbase-init.ps1"
@@ -91,13 +88,11 @@
   ],
   "post-processors": [
     {
-      "type": "manifest",
-      "output": "{{user `vm_name`}}-manifest.json"
-    },
-    {
-      "type": "shell-local",
-      "inline": "jq '.last_run_uuid as $p | .builds[] | select(.packer_run_uuid == $p) | .files[] | select(.name | contains(\"vmx\")) | select(.name | contains(\"vmxf\") | not ) | .name' {{user `vm_name`}}-manifest.json | xargs output_processors/file",
-      "environment_vars": [ "OUTPUT_DIR={{user `output_dir`}}", "VM_NAME={{user `vm_name`}}" ] 
+      "type": "ovftool",
+      "target_format": "ova",
+      "appliance_name": "{{user `vm_name`}}",
+      "output_dir": "{{user `output_dir`}}",
+      "keep_ovf": "{{user `keep_ovf`}}"
     },
     {
       "type": "abiquo",
