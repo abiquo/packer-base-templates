@@ -20,7 +20,7 @@
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_password": "{{user `ssh_password`}}",
       "shutdown_timeout": "{{user `shutdown_timeout`}}",
-      "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
+      "shutdown_command": "C:\\Windows\\System32\\Sysprep\\Sysprep.exe /generalize /oobe /shutdown \"/unattend:C:\\Program Files\\Cloudbase Solutions\\Cloudbase-Init\\conf\\Unattend.xml\"",
       "guest_os_type": "{{user `guest_os`}}",
       "tools_upload_flavor": "windows",
       "disk_size": "{{user `disk_size`}}",
