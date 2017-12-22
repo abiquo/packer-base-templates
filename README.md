@@ -8,6 +8,14 @@ Packer templates as they are in this repo use the [Abiquo packer post-processor]
 
 If you don't want to use such plugin, you'll need to edit the json templates and remove the `abiquo` post-processor.
 
+## Dependencies
+
+The templates in this repo use some packer plugins you need to have available in your system, namely:
+
+- [Abiquo post processor](https://github.com/abiquo/packer-post-processor-abiquo). The templates are built and uploaded to internal Abiquo platform for testing.
+- [OVF tool post processor](https://github.com/chirauki/packer-post-processor-ovftool). Exports VMware VMs to OVF/OVA.
+- [Windows Update provisioner](https://github.com/rgl/packer-provisioner-windows-update). In order to get the updates installed in Windows templates.
+
 ## Usage
 
 For CI purposes, the `maketemplate.py` was built.

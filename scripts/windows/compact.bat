@@ -26,7 +26,11 @@ rmdir /S /Q C:\Windows\SoftwareDistribution\Download
 mkdir C:\Windows\SoftwareDistribution\Download
 net start wuauserv
 
+Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
+
 cmd /c C:\Windows\Temp\ultradefrag-portable-6.1.0.amd64\udefrag.exe --optimize --repeat C:
 
 cmd /c %SystemRoot%\System32\reg.exe ADD HKCU\Software\Sysinternals\SDelete /v EulaAccepted /t REG_DWORD /d 1 /f
 cmd /c C:\Windows\Temp\sdelete.exe -q -z C:
+
+powershell -Command "@(\"$env:localappdata\Nuget\", \"$env:localappdata\temp\*\", \"$env:windir\logs\", \"$env:windir\panther\", \"$env:windir\temp\*\", \"$env:windir\winsxs\manifestcache\") | % {if(Test-Path $_) { Remove-Item $_ -Recurse -Force -ErrorAction SilentlyContinue | Out-Null }}"
