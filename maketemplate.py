@@ -144,8 +144,9 @@ if __name__ == "__main__":
             json_vars['output_dir'] = outdir
             logger.info('Using output dir %s' % outdir)
 
+        keep_ovf = ''
         if 'KEEP_OVF' in os.environ.keys() and os.environ['KEEP_OVF'] == 'true':
-            json_vars['keep_ovf'] = "true"
+            keep_ovf = "-var 'keep_ovf=true'"
 
         if args.packer:
             packer_cmd = args.packer
@@ -158,9 +159,9 @@ if __name__ == "__main__":
 
         command = None
         if outdir is None:
-            command = "%s build -force -var-file %s %s %s" % (packer_cmd, file, headless, template_file)
+            command = "%s build -force -var-file %s %s %s %s" % (packer_cmd, file, headless, keep_ovf, template_file)
         else:
-            command = "%s build -force -var-file %s %s -var 'output_dir=%s' %s" % (packer_cmd, file, headless, outdir, template_file)
+            command = "%s build -force -var-file %s %s %s -var 'output_dir=%s' %s" % (packer_cmd, file, headless, keep_ovf, outdir, template_file)
 
         logger.info('Packer command to run is : %s' % command)
 

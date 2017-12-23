@@ -1,5 +1,6 @@
 {
     "template": "templates/windows.json",
+    "keep_ovf": "false",
     "info": "Log in as 'administrator' with password 'Abiqu0!$'.",
     "product": "Windows Server 2016 Datacenter Edition",
     "icon": "http://s3-eu-west-1.amazonaws.com/packer-repo/icons/win2016-dc.png",
