@@ -7,7 +7,7 @@
     {
       "type": "vmware-iso",
       "boot_command": [
-        "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `kickstart_file`}} SERVERNAME={{user `vm_name`}} biosdevname=0 net.ifnames=0<enter><wait>"
+        "<up><tab> ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/{{user `kickstart_file`}} SERVERNAME={{user `vm_name`}} inst.text biosdevname=0 net.ifnames=0<enter><wait>"
       ],
       "boot_wait": "5s",
       "disk_size": "{{user `disk_size`}}",
@@ -35,6 +35,13 @@
     }
   ],
   "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "atomic host upgrade",
+        "echo 'datasource_list: [ ConfigDrive ]' >> /etc/cloud/cloud.cfg"
+      ]
+    }
   ],
   "post-processors": [
     {
