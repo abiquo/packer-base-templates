@@ -23,7 +23,7 @@
         "eject<enter>",
         "reboot<enter>"
       ],
-      "boot_wait": "10s",
+      "boot_wait": "20s",
       "disk_size": "{{user `disk_size`}}",
       "disk_type_id": "0",
       "vmdk_name": "{{user `vm_name`}}",
