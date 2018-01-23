@@ -45,10 +45,6 @@
   "provisioners": [
     {
       "type": "windows-shell",
-      "inline": "net stop \"windows update\""
-    },
-    {
-      "type": "windows-shell",
       "scripts": [
         "./scripts/windows/ntp.bat",
         "./scripts/windows/vm-guest-tools.bat",
