@@ -39,7 +39,8 @@
       "type": "shell",
       "inline": [
         "atomic host upgrade",
-        "echo 'datasource_list: [ ConfigDrive ]' >> /etc/cloud/cloud.cfg"
+        "echo 'datasource_list: [ ConfigDrive ]' >> /etc/cloud/cloud.cfg",
+        "for s in cloud-init cloud-config cloud-final cloud-init-local; do systemctl enable $s ; done"
       ]
     }
   ],
