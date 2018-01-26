@@ -7,7 +7,7 @@
     {
       "type": "vmware-iso",
       "boot_command": [
-          "<enter><wait10><wait10>",
+          "<enter><wait10><wait10><wait10>",
           "sudo -i<enter>",
           "systemctl stop sshd.socket<enter>",
           "wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/coreos-install.yml<enter>",
