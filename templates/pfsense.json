@@ -7,9 +7,9 @@
     {
       "type": "vmware-iso",
       "boot_command": [
-        "<down><down><down><enter><wait><wait><enter><wait><wait><enter><wait10><wait10>",
-        "<wait10><wait10><enter><wait10><wait10><wait10><wait10><enter>",
-        "<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>n<enter>",
+        "<enter><wait><enter><wait><enter><wait><enter><wait><wait10><wait10>",
+        "<wait10><wait10><enter><wait><enter><wait10><wait10><wait10><wait10><wait10>",
+        "<wait10><wait10>n<enter>",
         "<wait><wait>em0<enter><wait><wait><enter><wait><wait>y<enter>",
         "<wait10><wait10><wait10><wait10><wait10>8<enter><wait><wait>",
         "telnet {{ .HTTPIP }} {{ .HTTPPort }} | sed '1,/^$/d' >/conf/config.xml<wait><enter>",
@@ -17,7 +17,7 @@
         "echo 'PasswordAuthentication yes' >> /usr/local/etc/ssh/sshd_config<enter>",
         "reboot<enter>"
       ],
-      "boot_wait": "100s",
+      "boot_wait": "60s",
       "disk_size": "{{user `disk_size`}}",
       "disk_type_id": "0",
       "vmdk_name": "{{user `vm_name`}}",
@@ -28,7 +28,7 @@
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "shutdown_command": "poweroff",
-      "shutdown_timeout" : "30s",
+      "shutdown_timeout" : "5000s",
       "ssh_password": "{{user `ssh_password`}}",
       "ssh_port": "{{user `ssh_port`}}",
       "ssh_username": "{{user `ssh_username`}}",
