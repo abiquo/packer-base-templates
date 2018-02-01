@@ -7,7 +7,7 @@
     {
       "type": "vmware-iso",
       "boot_command": [
-        "<enter><wait><enter><wait><enter><wait><enter><wait><wait10><wait10>",
+        "<enter><wait5><enter><wait5><enter><wait5><enter><wait5><wait10><wait10>",
         "<wait10><wait10><enter><wait><enter><wait10><wait10><wait10><wait10><wait10>",
         "<wait10><wait10>n<enter>",
         "<wait><wait>em0<enter><wait><wait><enter><wait><wait>y<enter>",
@@ -17,7 +17,7 @@
         "echo 'PasswordAuthentication yes' >> /usr/local/etc/ssh/sshd_config<enter>",
         "reboot<enter>"
       ],
-      "boot_wait": "90s",
+      "boot_wait": "50s",
       "disk_size": "{{user `disk_size`}}",
       "disk_type_id": "0",
       "vmdk_name": "{{user `vm_name`}}",
