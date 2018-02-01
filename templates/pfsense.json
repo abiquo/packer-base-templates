@@ -17,7 +17,7 @@
         "echo 'PasswordAuthentication yes' >> /usr/local/etc/ssh/sshd_config<enter>",
         "reboot<enter>"
       ],
-      "boot_wait": "60s",
+      "boot_wait": "90s",
       "disk_size": "{{user `disk_size`}}",
       "disk_type_id": "0",
       "vmdk_name": "{{user `vm_name`}}",
@@ -28,7 +28,7 @@
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "shutdown_command": "poweroff",
-      "shutdown_timeout" : "5000s",
+      "shutdown_timeout" : "50s",
       "ssh_password": "{{user `ssh_password`}}",
       "ssh_port": "{{user `ssh_port`}}",
       "ssh_username": "{{user `ssh_username`}}",
