@@ -13,7 +13,10 @@ rc-update add open-vm-tools default
 
 # cloud-init
 apk --update add cloud-init
+rc-update add cloud-init-local default
 rc-update add cloud-init default
+rc-update add cloud-config default
+rc-update add cloud-final default
 cat << ENOENT >> /etc/cloud/cloud.cfg
 datasource_list: [ ConfigDrive ]
 ENOENT

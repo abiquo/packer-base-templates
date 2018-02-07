@@ -28,10 +28,19 @@ sed s/disable_root.*/disable_root:\ 0/g /etc/cloud/cloud.cfg
 sed s/ssh_pwauth.*/ssh_pwauth:\ 1/g /etc/cloud/cloud.cfg
 
 if [ -x "/usr/bin/systemctl" ]; then
+  /usr/bin/systemctl enable cloud-init-local
   /usr/bin/systemctl enable cloud-init
+  /usr/bin/systemctl enable cloud-config
+  /usr/bin/systemctl enable cloud-final
 else
   /sbin/chkconfig --add cloud-init
+  /sbin/chkconfig --add cloud-init-local
+  /sbin/chkconfig --add cloud-config
+  /sbin/chkconfig --add cloud-final
+  /sbin/chkconfig cloud-init-local on
   /sbin/chkconfig cloud-init on
+  /sbin/chkconfig cloud-config on
+  /sbin/chkconfig cloud-final on
 fi
 
 cd
