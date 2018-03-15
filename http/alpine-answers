@@ -1,4 +1,4 @@
-KEYMAPOPTS="us us"
+../scripts/alpine-cloud-init.shKEYMAPOPTS="us us"
 HOSTNAMEOPTS="-n alpine"
 INTERFACESOPTS="auto lo
 iface lo inet loopback
@@ -9,7 +9,7 @@ iface eth0 inet dhcp
 DNSOPTS="-n 8.8.8.8"
 TIMEZONEOPTS="-z CET"
 PROXYOPTS="none"
-APKREPOSOPTS="http://dl-5.alpinelinux.org/alpine/latest-stable/main http://dl-5.alpinelinux.org/alpine/latest-stable/community http://dl-5.alpinelinux.org/alpine/edge/main http://dl-5.alpinelinux.org/alpine/edge/community http://dl-5.alpinelinux.org/alpine/edge/testing"
+APKREPOSOPTS="http://dl-4.alpinelinux.org/alpine/latest-stable/main http://dl-4.alpinelinux.org/alpine/latest-stable/community http://dl-4.alpinelinux.org/alpine/v3.5/main http://dl-4.alpinelinux.org/alpine/v3.5/community http://dl-4.alpinelinux.org/alpine/v3.5/testing"
 SSHDOPTS="-c openssh"
 NTPOPTS="-c none"
 DISKOPTS="-m sys /dev/sda"
