@@ -8,9 +8,9 @@ cp -rp /etc/cloud/* $tmpcfg/
 tmpdir=$(mktemp -d)
 
 cd $tmpdir
-wget https://launchpad.net/cloud-init/trunk/0.7.9/+download/cloud-init-0.7.9.tar.gz
-tar xf cloud-init-0.7.9.tar.gz
-cd cloud-init-0.7.9
+curl -L https://launchpad.net/cloud-init/trunk/18.1/+download/cloud-init-18.1.tar.gz -o cloud-init-18.1.tar.gz
+tar xf cloud-init-18.1.tar.gz
+cd cloud-init-18.1
 
 if [ -x "/usr/bin/systemctl" ]; then
   python setup.py install --init-system=systemd
