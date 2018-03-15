@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Add virtio to dracut
-echo "add_drivers+=\"virtio virtio_blk virtio_net virtio_pci\"" >> /etc/dracut.conf
+echo "add_drivers+=\"virtio virtio_blk virtio_net virtio_pci hv_vmbus hv_storvsc hv_blkvsc hv_netvsc\"" >> /etc/dracut.conf
 
 yum -y install epel-release
 yum -y update
