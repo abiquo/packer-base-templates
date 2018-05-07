@@ -32,6 +32,10 @@ fi
 sed s/disable_root.*/disable_root:\ 0/g /etc/cloud/cloud.cfg
 sed s/ssh_pwauth.*/ssh_pwauth:\ 1/g /etc/cloud/cloud.cfg
 
+cat << ENOENT > /etc/network/interfaces
+source /etc/network/interfaces.d/*
+ENOENT
+
 if [ -x "/bin/systemctl" ]; then
   /bin/systemctl enable cloud-init-local
   /bin/systemctl enable cloud-init

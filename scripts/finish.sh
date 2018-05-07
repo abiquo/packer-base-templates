@@ -25,10 +25,10 @@ if [ -f /etc/lsb-release ]; then # Check if Ubuntu
 fi
 
 # Delete udev net rules
-[ -f /etc/udev/rules.d/70-persistent-net.rules ] && rm -f /etc/udev/rules.d/70-persistent-net.rules
-[ -d /var/lib/dhclient ] && rm -f /var/lib/dhclient/*.lease
-[ -d /var/lib/dhcp ] && rm -f /var/lib/dhcp/*.lease
-[ -d /var/lib/NetworkManager ] && rm -f /var/lib/NetworkManager/*.lease
+rm -f /etc/udev/rules.d/70-persistent-net.rules
+rm -f /var/lib/dhclient/*.lease
+rm -f /var/lib/dhcp/*.lease
+rm -f /var/lib/NetworkManager/*.lease
 
 # Make sure disk is zeroed
 dd if=/dev/zero of=/EMPTY bs=1M
