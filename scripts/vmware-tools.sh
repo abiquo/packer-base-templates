@@ -14,10 +14,15 @@ if [[ "$ISSUE" == *"openSUSE"* ]]; then
   exit $?
 fi
 
-if [[ "$ISSUE" == *"CentOS"* ]] || [[ "$ISSUE" == *"Fedora"* ]] || [[ "$ISSUE" == *"Atomic"* ]]; then
+if [[ "$ISSUE" == *"CentOS"* ]] || [[ "$ISSUE" == *"Atomic"* ]]; then
 	yum -y install open-vm-tools
-  echo "add_drivers+=\"virtio virtio_blk virtio_net virtio_pci vmw_pvscsi vmxnet3 vmw_baloon hv_storsvc hv_vmbus hv_utils hv_ballon hv_netsvc\"" >> /etc/dracut.conf.d/hv.conf
   dracut -f
   exit $?
 fi
 
+# Fedora
+if [[ -f "/etc/fedora-release" ]]; then
+  dnf -y install open-vm-tools
+  dracut -f
+  exit $?
+fi
