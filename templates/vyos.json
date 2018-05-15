@@ -94,7 +94,6 @@
       "login_user": "{{user `ssh_username`}}",
       "login_password": "{{user `ssh_password`}}",
       "eth_driver": "VIRTIO",
-      "chef_enabled": "false",
       "icon_url": "{{user `icon`}}"
     }
   ]

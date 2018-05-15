@@ -58,9 +58,6 @@
       "script": "./scripts/windows/virtio.ps1"
     },
     {
-      "type": "windows-update"
-    },
-    {
       "type": "windows-restart",
       "restart_timeout": "30m"
     },
@@ -108,7 +105,7 @@
       "login_user": "{{user `ssh_username`}}",
       "login_password": "{{user `ssh_password`}}",
       "eth_driver": "VIRTIO",
-      "chef_enabled": "false",
+      "guest_setup": "CLOUD_INIT",
       "icon_url": "{{user `icon`}}"
     }
   ]
