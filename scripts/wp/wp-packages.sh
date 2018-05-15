@@ -9,7 +9,7 @@ yum -y update
 yum -y install ntp curl vim htop ccze wget git yum-utils unzip \
        yum-cron kernel-devel bash-completion make gcc gcc-c++ \
        haveged jq php72u-json mod_php72u php72u-cli php72u-mysqlnd \
-       mariadb mariadb-server less sudo
+       mariadb mariadb-server less sudo open-vm-tools
 
 systemctl enable haveged
 systemctl disable NetworkManager

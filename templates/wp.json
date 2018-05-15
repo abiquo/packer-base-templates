@@ -45,7 +45,10 @@
       "source_ami": "{{user `aws_source_ami`}}",
       "instance_type": "{{user `aws_instance_type`}}",
       "ssh_username": "{{user `aws_ssh_username`}}",
-      "ami_name": "{{user `vm_name`}}-{{timestamp}}"
+      "ami_name": "{{user `vm_name`}}-{{timestamp}}",
+      "subnet_id": "{{user `subnet_id`}}",
+      "vpc_id": "{{user `vpc_id`}}",
+      "associate_public_ip_address": "{{user `associate_public_ip_address`}}"
     },
     {
       "type": "azure-arm",
@@ -53,7 +56,7 @@
       "client_secret": "{{user `arm_client_secret`}}",
       "subscription_id": "{{user `arm_subscription_id`}}",
       "tenant_id": "{{user `arm_tenant_id`}}",
-      "managed_image_name": "{{user `arm_managed_image_name`}}",
+      "managed_image_name": "{{user `arm_managed_image_name`}}-{{timestamp}}",
       "managed_image_resource_group_name": "{{user `arm_managed_image_resource_group_name`}}",
       "os_type": "{{user `arm_os_type`}}",
       "image_publisher": "{{user `arm_image_publisher`}}",
@@ -90,34 +93,6 @@
       "inline": [ "/usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync" ],
       "inline_shebang": "/bin/sh -x",
       "type": "shell"
-    }
-  ],
-  "post-processors": [
-    {
-      "type": "ovftool",
-      "only": ["vmware-iso"],
-      "target_format": "ova",
-      "appliance_name": "{{user `vm_name`}}",
-      "output_dir": "{{user `output_dir`}}",
-      "keep_ovf": "{{user `keep_ovf`}}"
-    },
-    {
-      "type": "abiquo",
-      "only": ["vmware-iso"],
-      "api_url": "https://mothership.bcn.abiquo.com/api",
-      "api_username": "{{user `abiquo_username`}}",
-      "api_password": "{{user `abiquo_password`}}",
-      "datacenter": "Abiquo BCN",
-      "template_name": "{{user `vm_name`}}",
-      "description": "{{user `info`}} {{timestamp}}",
-      "category": "{{user `category`}}",
-      "cpu": "{{user `cpu`}}",
-      "ram_mb": "{{user `ram`}}",
-      "login_user": "{{user `ssh_username`}}",
-      "login_password": "{{user `ssh_password`}}",
-      "eth_driver": "VIRTIO",
-      "chef_enabled": "true",
-      "icon_url": "{{user `icon`}}"
     }
   ]
 }
