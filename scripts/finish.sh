@@ -29,6 +29,7 @@ rm -f /etc/udev/rules.d/70-persistent-net.rules
 rm -f /var/lib/dhclient/*.lease
 rm -f /var/lib/dhcp/*.lease
 rm -f /var/lib/NetworkManager/*.lease
+rm -f /etc/netplan/*
 
 # Make sure disk is zeroed
 dd if=/dev/zero of=/EMPTY bs=1M
