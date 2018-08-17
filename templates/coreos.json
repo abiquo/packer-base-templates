@@ -11,8 +11,12 @@
           "sudo -i<enter>",
           "systemctl stop sshd.socket<enter>",
           "wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/coreos-install.yml<enter>",
-          "coreos-install -d /dev/sda -C {{user `channel`}} -c coreos-install.yml<enter>",
-          "<wait10><wait10><wait10><wait10><wait10><wait10>",
+          "cat coreos-install.yml<enter>",
+          "wget -O coreos-install https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install<enter>",
+          "chmod +x coreos-install<enter>",
+          "./coreos-install -d /dev/sda -C {{user `channel`}} -c coreos-install.yml -o vmware_raw<enter>",
+          "<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
+          "eject<enter>",
           "reboot<enter>"
       ],
       "boot_wait": "5s",
@@ -44,6 +48,7 @@
     {
       "type": "shell",
       "environment_vars" : [],
+      "execute_command": "sudo {{ .Path }}",
       "scripts": [
         "scripts/finish.sh"
       ]
