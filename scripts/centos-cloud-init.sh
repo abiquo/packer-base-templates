@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum -y install python-devel python-setuptools cloud-init
+yum -y install python-devel python-setuptools python-pip cloud-init
 
 tmpcfg=$(mktemp -d)
 cp -rp /etc/cloud/* $tmpcfg/
@@ -11,6 +11,8 @@ cd $tmpdir
 curl -L https://launchpad.net/cloud-init/trunk/18.1/+download/cloud-init-18.1.tar.gz -o cloud-init-18.1.tar.gz
 tar xf cloud-init-18.1.tar.gz
 cd cloud-init-18.1
+
+pip install -r requirements.txt
 
 if [ -x "/usr/bin/systemctl" ]; then
   python setup.py install --init-system=systemd
