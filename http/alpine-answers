@@ -9,7 +9,7 @@ iface eth0 inet dhcp
 DNSOPTS="-n 8.8.8.8"
 TIMEZONEOPTS="-z CET"
 PROXYOPTS="none"
-APKREPOSOPTS="http://dl-4.alpinelinux.org/alpine/latest-stable/main http://dl-4.alpinelinux.org/alpine/latest-stable/community http://dl-4.alpinelinux.org/alpine/v3.5/main http://dl-4.alpinelinux.org/alpine/v3.5/community http://dl-4.alpinelinux.org/alpine/v3.5/testing"
+APKREPOSOPTS="https://uk.alpinelinux.org/alpine/latest-stable/main https://uk.alpinelinux.org/alpine/latest-stable/community https://uk.alpinelinux.org/alpine/edge/main https://uk.alpinelinux.org/alpine/edge/community https://uk.alpinelinux.org/alpine/edge/testing"
 SSHDOPTS="-c openssh"
 NTPOPTS="-c none"
 DISKOPTS="-m sys /dev/sda"

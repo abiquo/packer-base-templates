@@ -9,15 +9,15 @@
     "vm_name": "alpine",
     "output_dir": "resulting_images/",
     "http_directory": "./http",
-    "iso_url": "https://nl.alpinelinux.org/alpine/v3.5/releases/x86_64/alpine-virt-3.5.1-x86_64.iso",
-    "iso_checksum": "8092b3d482fb1b7a5cf28c43bc1425c8f2d380e86869c0686c49aa7b0f086ab2",
+    "iso_url": "https://uk.alpinelinux.org/alpine/v3.8/releases/x86_64/alpine-virt-3.8.0-x86_64.iso",
+    "iso_checksum": "c0daab130ff32399bfce8893d7f6c591078ce8f87e82a2b987f8832fa6cf2d76",
     "iso_checksum_type": "sha256",
     "ssh_port": "22",
     "ssh_wait_timeout": "1h",
     "ssh_password": "temporal",
     "ssh_username": "root",
     "cpu": "1",
-    "ram": "128",
+    "ram": "1024",
     "disk_size": "1024",
     "kickstart_file": "alpine-answers"
 }
