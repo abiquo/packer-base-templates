@@ -1,8 +1,4 @@
 {
-  "variables": {
-    "abiquo_username": "{{env `ABIQUO_USERNAME`}}",
-    "abiquo_password": "{{env `ABIQUO_PASSWORD`}}"
-  },
   "builders": [
     {
       "type": "vmware-iso",
@@ -23,7 +19,7 @@
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
-      "shutdown_command" : "shutdown -h now",
+      "shutdown_command" : "sudo shutdown -h now",
       "shutdown_timeout" : "300s",
       "ssh_password": "{{user `ssh_password`}}",
       "ssh_port": "{{user `ssh_port`}}",
@@ -70,10 +66,9 @@
     {
       "type": "shell",
       "only": ["vmware-iso"],
+      "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'",
       "scripts": [
         "scripts/wp/wp-packages.sh",
-        "scripts/vmware-tools.sh",
-        "scripts/centos-cloud-init.sh",
         "scripts/wp/wp-install.sh",
         "scripts/finish.sh"
       ]
