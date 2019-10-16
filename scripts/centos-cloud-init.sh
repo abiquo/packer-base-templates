@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum -y install python-devel python-setuptools python-pip cloud-init
+yum -y install python-devel python-setuptools python-pip cloud-init-18.2
 
 tmpcfg=$(mktemp -d)
 cp -rp /etc/cloud/* $tmpcfg/
