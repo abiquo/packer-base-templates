@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum -y install python-devel python-setuptools python-pip #cloud-init-18.5
+yum -y install python-devel python-setuptools python-pip net-tools #cloud-init-18.5
 
 tmpcfg=$(mktemp -d)
 cp -rp /etc/cloud/* $tmpcfg/
@@ -8,9 +8,9 @@ cp -rp /etc/cloud/* $tmpcfg/
 tmpdir=$(mktemp -d)
 
 cd $tmpdir
-curl -L https://launchpad.net/cloud-init/trunk/18.2/+download/cloud-init-18.2.tar.gz -o cloud-init-18.2.tar.gz
-tar xf cloud-init-18.2.tar.gz
-cd cloud-init-18.2
+curl -L https://launchpad.net/cloud-init/trunk/18.1/+download/cloud-init-18.1.tar.gz -o cloud-init-18.1.tar.gz
+tar xf cloud-init-18.1.tar.gz
+cd cloud-init-18.1
 
 pip install -r requirements.txt
 pip install --upgrade six
