@@ -12,6 +12,9 @@ curl -L https://launchpad.net/cloud-init/trunk/18.1/+download/cloud-init-18.1.ta
 tar xf cloud-init-18.1.tar.gz
 cd cloud-init-18.1
 
+# skip error in more-itertools > 6.0.0
+echo 'more-itertools<6.0.0' >> requirements.txt
+
 pip install -r requirements.txt
 pip install --upgrade six
 
